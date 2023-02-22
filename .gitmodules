@@ -1,0 +1,3 @@
+[submodule "system/Arduino-Air001-Drivers"]
+	path = system/Arduino-Air001-Drivers
+	url = https://github.com/Air-duino/Arduino-Air001-Drivers.git
