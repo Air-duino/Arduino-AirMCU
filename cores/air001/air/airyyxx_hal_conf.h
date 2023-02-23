@@ -1,5 +1,5 @@
-#ifndef __STM32YYxx_HAL_CONF_H
-#define __STM32YYxx_HAL_CONF_H
+#ifndef __AIRYYxx_HAL_CONF_H
+#define __AIRYYxx_HAL_CONF_H
 
 /*
  * Mandatory HAL modules
@@ -183,6 +183,6 @@
   HAL_WWDG_MODULE_ENABLED
 #endif
 
-#endif /* __STM32YYxx_HAL_CONF_H */
+#endif /* __AIRYYxx_HAL_CONF_H */
 
 
