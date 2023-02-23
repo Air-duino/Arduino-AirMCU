@@ -17,8 +17,8 @@
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __STM32F0xx_HAL_CONF_DEFAULT_H
-#define __STM32F0xx_HAL_CONF_DEFAULT_H
+#ifndef __AIR001xx_HAL_CONF_DEFAULT_H
+#define __AIR001xx_HAL_CONF_DEFAULT_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -337,7 +337,7 @@ void assert_failed(uint8_t* file, uint32_t line);
 }
 #endif
 
-#endif /* __STM32F0xx_HAL_CONF_DEFAULT_H */
+#endif /* __AIR001xx_HAL_CONF_DEFAULT_H */
 
 
 /************************ (C) COPYRIGHT AirM2M *****END OF FILE****/
