@@ -1,16 +1,6 @@
-# See: https://arduino.github.io/arduino-cli/latest/platform-specification/
-
-menu.pnum=Board part number
-
-menu.xserial=U(S)ART support
-menu.usb=USB support (if available)
-menu.xusb=USB speed (if available)
-menu.virtio=Virtual serial support
-
-menu.opt=Optimize
-menu.dbg=Debug symbols and core logs
-menu.rtlib=C Runtime Library
-menu.upload_method=Upload method
+# This file help to add generic board entry.
+# upload.maximum_size and product_line have to be verified
+# and changed if needed.
 
 ###############################
 # Air001 Dev
@@ -30,4 +20,3 @@ Air001Dev.upload.maximum_data_size=8192
 Air001.build.product_line=AIR001
 Air001.build.variant=Air001/air001_dev
 
-# Upload menu
