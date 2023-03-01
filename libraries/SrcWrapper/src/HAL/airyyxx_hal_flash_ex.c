@@ -4,8 +4,6 @@
 
 #ifdef AIRC0xx
   #include "airc0xx_hal_flash_ex.c"
-#elif AIR001xx
-  #include "air001xx_hal_flash_ex.c"
 #elif AIRF1xx
   #include "airf1xx_hal_flash_ex.c"
 #elif AIRF2xx
