@@ -8,7 +8,7 @@
   #pragma GCC diagnostic ignored "-Wregister"
 #endif
 
-#ifdef AIR001XX
+#ifdef AIR001xx
   #include "air001xx_ll_i2c.h"
 #endif
 #pragma GCC diagnostic pop

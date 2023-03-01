@@ -937,13 +937,17 @@ void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
   }
 #else
   if (__HAL_UART_GET_FLAG(huart, UART_FLAG_PE) != RESET) {
-    __HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_PEF); /* Clear PE flag */
+    //__HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_PEF); /* Clear PE flag */
+    __HAL_UART_CLEAR_PEFLAG(huart);
   } else if (__HAL_UART_GET_FLAG(huart, UART_FLAG_FE) != RESET) {
-    __HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_FEF); /* Clear FE flag */
+    //__HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_FEF); /* Clear FE flag */
+    __HAL_UART_CLEAR_FEFLAG(huart);
   } else if (__HAL_UART_GET_FLAG(huart, UART_FLAG_NE) != RESET) {
-    __HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_NEF); /* Clear NE flag */
+    //__HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_NEF); /* Clear NE flag */
+    __HAL_UART_CLEAR_NEFLAG(huart);
   } else if (__HAL_UART_GET_FLAG(huart, UART_FLAG_ORE) != RESET) {
-    __HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_OREF); /* Clear ORE flag */
+    //__HAL_UART_CLEAR_FLAG(huart, UART_CLEAR_OREF); /* Clear ORE flag */
+    __HAL_UART_CLEAR_OREFLAG(huart);
   }
 #endif
   /* Restart receive interrupt after any error */

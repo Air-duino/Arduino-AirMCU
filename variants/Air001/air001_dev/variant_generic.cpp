@@ -10,7 +10,7 @@
  *
  *******************************************************************************
  */
-#if defined(ARDUINO_Air001_Dev)
+#if defined(ARDUINO_AIR001_DEV)
 #include "pins_arduino.h"
 
 // Digital PinName array
@@ -47,9 +47,6 @@ const PinName digitalPin[] = {
   PB_13,  // D29
   PB_14,  // D30
   PB_15,  // D31
-  PC_13,  // D32
-  PC_14,  // D33
-  PC_15,  // D34
   PF_0,   // D35
   PF_1,   // D36
   PF_6,   // D37

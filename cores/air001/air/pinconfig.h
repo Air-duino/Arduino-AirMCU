@@ -1,6 +1,6 @@
 /*
  *******************************************************************************
- * Copyright (c) 2023, AirM2M
+ * Copyright (c) 2018-2021, STMicroelectronics
  * All rights reserved.
  *
  * This software component is licensed by ST under BSD 3-Clause license,
@@ -10,30 +10,33 @@
  *
  *******************************************************************************
  *
+ * Based on mbed-os/target/TARGET_STM/TARGET_STMYY/pin_device.h
  */
 #ifndef _PINCONFIG_H
 #define _PINCONFIG_H
 
+#include "PinAF_AIRF1.h"
 #include "lock_resource.h"
 #include "airyyxx_ll_gpio.h"
 
 static inline void pin_DisconnectDebug(PinName pin)
 {
-#ifdef 0
+#ifdef AIRF1xx
+  pinF1_DisconnectDebug(pin);
 #else
   UNUSED(pin);
-#endif /* 0 */
+#endif /* AIRF1xx */
 }
 
 static inline void pin_PullConfig(GPIO_TypeDef *gpio, uint32_t ll_pin, uint32_t pull_config)
 {
-#ifdef 0
+#ifdef AIRF1xx
   uint32_t function = LL_GPIO_GetPinMode(gpio, ll_pin);
 #endif
   hsem_lock(CFG_HW_GPIO_SEMID, HSEM_LOCK_DEFAULT_RETRY);
   switch (pull_config) {
     case GPIO_PULLUP:
-#ifdef 0
+#ifdef AIRF1xx
       if (function == LL_GPIO_MODE_FLOATING) {
         LL_GPIO_SetPinMode(gpio, ll_pin, LL_GPIO_MODE_INPUT);
       }
@@ -41,7 +44,7 @@ static inline void pin_PullConfig(GPIO_TypeDef *gpio, uint32_t ll_pin, uint32_t 
       LL_GPIO_SetPinPull(gpio, ll_pin, LL_GPIO_PULL_UP);
       break;
     case GPIO_PULLDOWN:
-#ifdef 0
+#ifdef AIRF1xx
       if (function == LL_GPIO_MODE_FLOATING) {
         LL_GPIO_SetPinMode(gpio, ll_pin, LL_GPIO_MODE_INPUT);
       }
@@ -49,7 +52,7 @@ static inline void pin_PullConfig(GPIO_TypeDef *gpio, uint32_t ll_pin, uint32_t 
       LL_GPIO_SetPinPull(gpio, ll_pin, LL_GPIO_PULL_DOWN);
       break;
     default:
-#ifdef 0
+#ifdef AIRF1xx
       /*  Input+NoPull = Floating for F1 family */
       if (function == LL_GPIO_MODE_INPUT) {
         LL_GPIO_SetPinMode(gpio, ll_pin, LL_GPIO_MODE_FLOATING);
@@ -64,7 +67,7 @@ static inline void pin_PullConfig(GPIO_TypeDef *gpio, uint32_t ll_pin, uint32_t 
 
 static inline void pin_SetAFPin(GPIO_TypeDef *gpio, PinName pin, uint32_t afnum)
 {
-#ifdef 0
+#ifdef AIRF1xx
   UNUSED(gpio);
   UNUSED(pin);
   pin_SetF1AFPin(afnum);

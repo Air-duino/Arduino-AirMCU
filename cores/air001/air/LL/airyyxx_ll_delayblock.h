@@ -8,6 +8,6 @@
   #pragma GCC diagnostic ignored "-Wregister"
 #endif
 
-#ifdef 0 //TODO
+#if 0 //#ifdefx xx //TODO
 #pragma GCC diagnostic pop
 #endif /* _AIRYYXX_LL_DELAYBLOCK_H_ */

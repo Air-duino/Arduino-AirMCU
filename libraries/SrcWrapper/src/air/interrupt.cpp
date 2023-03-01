@@ -94,7 +94,7 @@ static uint8_t get_pin_id(uint16_t pin)
 
   return id;
 }
-void stm32_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_t callback, uint32_t mode)
+void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_t callback, uint32_t mode)
 {
   GPIO_InitTypeDef GPIO_InitStruct;
   uint8_t id = get_pin_id(pin);
@@ -169,10 +169,10 @@ void stm32_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_
   * @param  mode : one of the supported interrupt mode defined in stm32_hal_gpio
   * @retval None
   */
-void stm32_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, void (*callback)(void), uint32_t mode)
+void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, void (*callback)(void), uint32_t mode)
 {
   std::function<void(void)> _c = callback;
-  stm32_interrupt_enable(port, pin, _c, mode);
+  air_interrupt_enable(port, pin, _c, mode);
 
 }
 
@@ -195,7 +195,7 @@ void stm32_interrupt_disable(GPIO_TypeDef *port, uint16_t pin)
     }
   }
 
-  LL_EXTI_DisableIT_0_31(ll_exti_lines[id]);
+  LL_EXTI_DisableIT(ll_exti_lines[id]);
   HAL_NVIC_DisableIRQ(gpio_irq_conf[id].irqnb);
 }
 

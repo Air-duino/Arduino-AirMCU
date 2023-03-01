@@ -32,8 +32,8 @@
 #define _PERIPHERALPINS_H
 
 #include "pinmap.h"
-#ifdef 0
-  #include ""
+#ifdef AIRF1xx
+  #include "PinAF_AIRF1.h"
 #endif
 
 //*** ADC ***

@@ -63,7 +63,7 @@
   * @{
   */
 
-#include "py32f0xx.h"
+#include "air001xx.h"
 
 #if !defined  (HSE_VALUE)
 #define HSE_VALUE    24000000U    /*!< Value of the External oscillator in Hz */

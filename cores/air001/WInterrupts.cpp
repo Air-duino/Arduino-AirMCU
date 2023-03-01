@@ -52,7 +52,7 @@ void attachInterrupt(uint32_t pin, callback_function_t callback, uint32_t mode)
   //pinF1_DisconnectDebug(p);
 #endif /* AIR32F1xx */
 
-  AIR32_interrupt_enable(port, AIR_GPIO_PIN(p), callback, it_mode);
+  air_interrupt_enable(port, AIR_GPIO_PIN(p), callback, it_mode);
 #else
   UNUSED(pin);
   UNUSED(callback);
@@ -81,7 +81,7 @@ void detachInterrupt(uint32_t pin)
   if (!port) {
     return;
   }
-  AIR32_interrupt_disable(port, AIR_GPIO_PIN(p));
+  air_interrupt_disable(port, AIR_GPIO_PIN(p));
 #else
   UNUSED(pin);
 #endif

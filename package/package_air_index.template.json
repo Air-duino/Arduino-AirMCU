@@ -17,10 +17,10 @@
           "help": {
             "online": "https://github.com/Air-duino/Arduino-AirMCU"
           },
-          "url": "",
+          "url": "https://github.com/Air-duino/Arduino-AirMCU/releases/download/test/AirMCU-0.0.1.zip",
           "archiveFileName": "AirMCU-0.0.1.zip",
-          "checksum": "SHA-256:",
-          "size": "",
+          "checksum": "SHA-256:8d978b5abee55d0d94e88167d99a679781455d43743ad01e9d1d5143d4e2d352",
+          "size": "5645614",
           "boards": [
             {
               "name": "Air001"
@@ -78,8 +78,7 @@
         {
           "name": "CMSIS",
           "version": "5.7.0",
-          "systems":
-          [
+          "systems": [
             {
               "host": "i686-mingw32",
               "url": "https://github.com/stm32duino/ArduinoModule-CMSIS/releases/download/5.7.0/CMSIS-5.7.0.tar.bz2",

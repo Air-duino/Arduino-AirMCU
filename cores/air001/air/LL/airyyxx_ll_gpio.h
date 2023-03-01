@@ -8,7 +8,7 @@
   #pragma GCC diagnostic ignored "-Wregister"
 #endif
 
-#ifdef AIR001XX
+#ifdef AIR001xx
   #include "air001xx_ll_gpio.h"
 #endif
 #pragma GCC diagnostic pop

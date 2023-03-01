@@ -8,7 +8,7 @@
   #pragma GCC diagnostic ignored "-Wregister"
 #endif
 
-#ifdef 0 //TODO
+#if 0 //#ifdefx xx //TODO
 #endif
 #pragma GCC diagnostic pop
 #endif /* _AIRYYXX_LL_FMPI2C_H_ */

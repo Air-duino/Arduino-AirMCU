@@ -8,7 +8,7 @@
   #pragma GCC diagnostic ignored "-Wregister"
 #endif
 
-#ifdef AIR001XX
+#ifdef AIR001xx
   #include "air001xx_ll_spi.h"
 #pragma GCC diagnostic pop
 #endif /* _AIRYYXX_LL_SPI_H_ */
