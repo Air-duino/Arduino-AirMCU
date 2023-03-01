@@ -10,12 +10,14 @@ compiler.c.cmd=arm-none-eabi-gcc
 compiler.cpp.cmd=arm-none-eabi-g++
 compiler.ar.cmd=arm-none-eabi-ar
 compiler.elf.cmd=arm-none-eabi-g++
-compiler.hex.cmd=arm-none-eabi-objcopy
-compiler.bin.cmd=arm-none-eabi-objcopy
-compiler.size.cmd=arm-none-eabi-size
+
+compiler.c.elf.cmd=arm-none-eabi-gcc
+compiler.objcopy.cmd=arm-none-eabi-objcopy
+compiler.elf2hex.cmd=arm-none-eabi-objcopy
+compiler.libraries.ldflags=
 
 # 需要额外引入的头文件的路径
-compiler.air.extra_include="-I{build.source.path}" "-I{build.core.path}/avr" "-I{build.core.path}/air" "-I{build.core.path}/air/LL" "-I{build.system.path}/Arduino-Air001-Drivers/{build.series}_HAL_Driver/Inc" "-I{build.system.path}/Arduino-Air001-Drivers/{build.series}_HAL_Driver/Src" "-I{build.system.path}/{build.series}" {build.virtio_extra_include}
+compiler.air.extra_include="-I{build.source.path}" "-I{build.core.path}/avr" "-I{build.core.path}/air" "-I{build.core.path}/air/LL" "-I{build.core.path}/air/usb" "-I{build.core.path}/air/usb/hid" "-I{build.core.path}/air/usb/cdc" "-I{build.system.path}/Arduino-Air001-Drivers/{build.series}_HAL_Driver/Inc" "-I{build.system.path}/Arduino-Air001-Drivers/{build.series}_HAL_Driver/Src" "-I{build.system.path}/{build.series}" {build.virtio_extra_include}
 
 # 编译器警告的参数
 compiler.warning_flags=-w
@@ -24,7 +26,7 @@ compiler.warning_flags.default=
 compiler.warning_flags.more=-Wall
 compiler.warning_flags.all=-Wall -Wextra
 
-# 编译器的参数
+# 编译器的参数compiler.ldflags
 compiler.extra_flags=-mcpu={build.mcu} {build.fpu} {build.float-abi} -DUSE_FULL_LL_DRIVER -mthumb "@{build.opt.path}"
 
 # 汇编编译器参数
@@ -43,11 +45,12 @@ compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,
 compiler.elf2bin.flags=-O binary
 compiler.elf2hex.flags=-O ihex
 
-compiler.ldflags=-Wl,--no-warn-rwx-segments
+compiler.ldflags=
 compiler.size.cmd=arm-none-eabi-size
 compiler.define=-DARDUINO=
 
 # These can be overridden in boards.txt 在board.txt中选择的参数会覆盖下面这些
+build.board=
 build.air_extra_flags=
 build.extra_flags=
 build.bootloader_flags=
@@ -113,11 +116,12 @@ build.flash_offset=0
 build.opt.name=build.opt
 build.opt.path={build.path}/sketch/{build.opt.name}
 
-extras.path={build.system.path}/extras
+extras.path={build.system.path}
 
 # Create {build.opt} if not exists in the output sketch dir and force include of SrcWrapper library
-recipe.hooks.prebuild.1.pattern="{extras.path}/prebuild.sh" "{build.path}" "{build.source.path}" "{runtime.platform.path}"
-# recipe.hooks.prebuild.1.pattern.windows="{runtime.tools.STM32Tools.path}/win/busybox.exe" sh "{extras.path}/prebuild.sh" "{build.path}" "{build.source.path}" "{runtime.platform.path}"
+
+recipe.hooks.prebuild.1.pattern="{extras.path}/extras/prebuild.sh" "{build.path}" "{build.source.path}" "{runtime.platform.path}"
+recipe.hooks.prebuild.1.pattern.windows={extras.path}\extras\prebuild.bat "{build.path}" "{build.source.path}" "{runtime.platform.path}"
 
 # compile patterns
 # ---------------------
