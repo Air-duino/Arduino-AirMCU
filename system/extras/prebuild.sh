@@ -23,6 +23,5 @@ else
   printf '\n-fmacro-prefix-map="%s"=.' "${BOARD_PLATFORM_PATH//\\/\\\\}" >> "$BUILD_PATH/sketch/build.opt"
 fi
 
-
 # Force include of SrcWrapper library
 echo "#include <SrcWrapper.h>" > "$BUILD_PATH/sketch/SrcWrapper.cpp"
