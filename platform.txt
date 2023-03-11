@@ -162,5 +162,39 @@ recipe.size.regex.eeprom=^(?:\.eeprom)\s+([0-9]+).*
 
 # Uploader tool
 # -------------------
+##
+## AirISP
+##
+tools.AirISP.path={runtime.tools.AirISP.path}
+tools.AirISP.cmd=AirISP
+tools.AirISP.cmd.windows=AirISP.exe
 
-# TODO
+## Upload Sketch
+## -------------
+tools.AirISP.upload.protocol=serial
+tools.AirISP.upload.params.verbose=
+tools.AirISP.upload.params.quiet=
+tools.AirISP.upload.pattern_args=--chip "auto" --port "{serial.port}" --baud {upload.speed} --before default_reset --after hard_reset write_flash 0x08000000 "{build.path}/{build.project_name}.bin"
+tools.AirISP.upload.pattern="{path}/{cmd}" {upload.pattern_args}
+
+## Program Application
+## -------------------
+tools.AirISP.program.params.verbose=
+tools.AirISP.program.params.quiet=
+tools.AirISP.program.pattern_args=--chip "auto" --port "{serial.port}" --baud {upload.speed} --before default_reset --after hard_reset write_flash 0x08000000 "{build.path}/{build.project_name}.bin"
+tools.AirISP.program.pattern="{path}/{cmd}" {program.pattern_args}
+
+## Erase Chip (before burning the bootloader)
+## ------------------------------------------
+tools.AirISP.erase.protocol=serial
+tools.AirISP.erase.params.verbose=
+tools.AirISP.erase.params.quiet=
+tools.AirISP.erase.pattern_args=---chip "auto" --port "{serial.port}" --baud {upload.speed} --before default_reset --after hard_reset erase_flash
+tools.AirISP.erase.pattern="{path}/{cmd}" {erase.pattern_args}
+
+## Burn Bootloader
+## ---------------
+tools.AirISP.bootloader.protocol=serial
+tools.AirISP.bootloader.params.verbose=
+tools.AirISP.bootloader.params.quiet=
+tools.AirISP.bootloader.pattern=
