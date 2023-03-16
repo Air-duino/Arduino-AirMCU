@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir -p release
           mkdir -p release/Arduino-AirMCU
-          cp -r dest.git release/Arduino-AirMCU
+          cp -r dest.git/ release/Arduino-AirMCU
           zip -r AirMCU-${GITHUB_REF#refs/tags/}.zip release
           ls -a
 
