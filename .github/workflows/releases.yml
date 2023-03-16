@@ -29,10 +29,9 @@ jobs:
       
       - name: Zip folder and save
         run: |
-          mkdir -p release
-          mkdir -p release/Arduino-AirMCU
-          cp -r dest.git/ release/Arduino-AirMCU
-          zip -r AirMCU-${GITHUB_REF#refs/tags/}.zip release
+          mkdir -p Arduino-AirMCU
+          cp -r dest.git/* Arduino-AirMCU/
+          zip -r AirMCU-${GITHUB_REF#refs/tags/}.zip Arduino-AirMCU
           ls -a
 
       - uses: ncipollo/release-action@v1
