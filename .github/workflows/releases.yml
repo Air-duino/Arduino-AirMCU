@@ -36,7 +36,7 @@ jobs:
           artifacts: "*.zip"
           allowUpdates: true
 
-        - name: Send repository_dispatch event to package json
+      - name: Send repository_dispatch event to package json
         run: |
           curl -X POST https://api.github.com/repos/Air-duino/Arduino-AirMCU/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
