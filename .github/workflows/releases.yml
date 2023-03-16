@@ -33,8 +33,9 @@ jobs:
           mkdir -p release/Arduino-AirMCU
           cp -r dest.git release/Arduino-AirMCU
           zip -r AirMCU-${GITHUB_REF#refs/tags/}.zip release
+          ls -a
 
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "AirMCU-${GITHUB_REF#refs/tags/}.zip"
-          
+          allowUpdates: true
