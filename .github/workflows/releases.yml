@@ -30,7 +30,6 @@ jobs:
           mkdir -p Arduino-AirMCU
           cp -r dest.git/* Arduino-AirMCU/
           zip -r AirMCU-${GITHUB_REF#refs/tags/}.zip Arduino-AirMCU
-          ls -a
 
       - uses: ncipollo/release-action@v1
         with:
