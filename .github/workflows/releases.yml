@@ -37,5 +37,5 @@ jobs:
 
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "AirMCU-${GITHUB_REF#refs/tags/}.zip"
+          artifacts: "*.zip"
           allowUpdates: true
