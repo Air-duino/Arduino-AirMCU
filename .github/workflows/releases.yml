@@ -31,14 +31,14 @@ jobs:
           cp -r dest.git/* Arduino-AirMCU/
           zip -r AirMCU-${GITHUB_REF#refs/tags/}.zip Arduino-AirMCU
 
-      - name: Send repository_dispatch event to package json
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "*.zip"
+          allowUpdates: true
+
+        - name: Send repository_dispatch event to package json
         run: |
           curl -X POST https://api.github.com/repos/Air-duino/Arduino-AirMCU/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.USER_TOKEN }} \
           --data '{"event_type": "AirMCU"}'
-
-      - uses: ncipollo/release-action@v1
-        with:
-          artifacts: "*.zip"
-          allowUpdates: true
