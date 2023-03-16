@@ -2,6 +2,7 @@
 
 menu.pnum=Board part number
 
+menu.UploadSpeed=Upload Speed
 menu.xserial=U(S)ART support
 menu.usb=USB support (if available)
 menu.xusb=USB speed (if available)
@@ -18,6 +19,12 @@ menu.upload_method=Upload method
 
 Air001Dev.name=Air001 Dev Chip
 
+Air001Dev.upload.maximum_size=32768
+Air001Dev.upload.maximum_data_size=4096
+
+Air001Dev.upload.tool=AirISP
+Air001Dev.upload.tool.default=AirISP
+
 Air001Dev.build.core=air001
 Air001Dev.build.board=AIR001_DEV
 Air001Dev.build.mcu=cortex-m0
@@ -26,7 +33,8 @@ Air001Dev.build.cmsis_lib_gcc=arm_cortexM0l_math
 Air001Dev.build.product_line=AIR001
 Air001Dev.build.variant=AIR001/AIR001_DEV
 Air001Dev.build.air_extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial}
-Air001Dev.upload.maximum_size=32768
-Air001Dev.upload.maximum_data_size=4096
+
+Air001Dev.menu.UploadSpeed.115200=115200
+Air001Dev.menu.UploadSpeed.115200.upload.speed=115200
 
 # Upload menu
