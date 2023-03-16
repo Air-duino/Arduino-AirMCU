@@ -1,0 +1,40 @@
+name: release
+
+on:
+  push:
+    tags:
+      - '*'
+
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: source
+
+      - name: Create bare clone and push to destination repository
+        run: |
+          git clone --bare source dest.git
+          cd dest.git
+      
+      - name: Remove git information from destination repository
+        run: |
+          cd dest.git
+          rm -rf .git
+      
+      - name: Zip folder and save
+        run: |
+          mkdir -p release
+          mkdir -p release/Arduino-AirMCU
+          cp -r dest.git release/Arduino-AirMCU
+          zip -r AirMCU-${GITHUB_REF#refs/tags/}.zip release
+
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "AirMCU-${GITHUB_REF#refs/tags/}.zip"
+          
