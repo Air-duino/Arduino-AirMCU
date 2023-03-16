@@ -26,7 +26,6 @@ compiler.warning_flags.default=
 compiler.warning_flags.more=-Wall
 compiler.warning_flags.all=-Wall -Wextra
 
-# 编译器的参数compiler.ldflags
 compiler.extra_flags=-mcpu={build.mcu} {build.fpu} {build.float-abi} -DUSE_FULL_LL_DRIVER -mthumb "@{build.opt.path}"
 
 # 汇编编译器参数
@@ -45,7 +44,8 @@ compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,
 compiler.elf2bin.flags=-O binary
 compiler.elf2hex.flags=-O ihex
 
-compiler.ldflags=
+# 编译器的链接参数compiler.ldflags
+compiler.ldflags=-Wl,--no-warn-rwx-segments # 消除 LOAD segment with RWX permissions 警告
 compiler.size.cmd=arm-none-eabi-size
 compiler.define=-DARDUINO=
 
