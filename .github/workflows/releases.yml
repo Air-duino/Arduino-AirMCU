@@ -17,14 +17,10 @@ jobs:
         with:
           path: source
 
-      - name: Create bare clone and push to destination repository
-        run: |
-          git clone --bare source dest.git
-          cd dest.git
-          git push --mirror https://<username>:${{ secrets.API_TOKEN_GITHUB }}@github.com/<org>/<dest_repo>.git
-      
       - name: Remove git information from destination repository
         run: |
+          mkdir dest.git
+          cp -r source/* dest.git/
           cd dest.git
           rm -rf .git
       
