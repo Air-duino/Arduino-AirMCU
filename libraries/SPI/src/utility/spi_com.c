@@ -323,9 +323,10 @@ void spi_init(spi_t *obj, uint32_t speed, spi_mode_e mode, uint8_t msb)
   } else {
     handle->Init.CLKPolarity       = SPI_POLARITY_HIGH;
   }
-
+#ifndef AIR001xx
   handle->Init.CRCCalculation    = SPI_CRCCALCULATION_DISABLE;
   handle->Init.CRCPolynomial     = 7;
+#endif
   handle->Init.DataSize          = SPI_DATASIZE_8BIT;
 
   if (msb == 0) {
@@ -333,8 +334,11 @@ void spi_init(spi_t *obj, uint32_t speed, spi_mode_e mode, uint8_t msb)
   } else {
     handle->Init.FirstBit          = SPI_FIRSTBIT_MSB;
   }
-
+  
+#ifndef AIR001xx
   handle->Init.TIMode            = SPI_TIMODE_DISABLE;
+#endif
+
 #if defined(SPI_NSS_PULSE_DISABLE)
   handle->Init.NSSPMode          = SPI_NSS_PULSE_DISABLE;
 #endif
@@ -351,7 +355,7 @@ void spi_init(spi_t *obj, uint32_t speed, spi_mode_e mode, uint8_t msb)
     pinmap_pinout(obj->pin_sclk, PinMap_SPI_SCLK);
 
     pull = (handle->Init.CLKPolarity == SPI_POLARITY_LOW) ? GPIO_PULLDOWN : GPIO_PULLUP;
-    pin_PullConfig(get_GPIO_Port(STM_PORT(obj->pin_sclk)), STM_LL_GPIO_PIN(obj->pin_sclk), pull);
+    pin_PullConfig(get_GPIO_Port(AIR_PORT(obj->pin_sclk)), AIR_LL_GPIO_PIN(obj->pin_sclk), pull);
     pinmap_pinout(obj->pin_ssel, PinMap_SPI_SSEL);
 #if defined(SUBGHZSPI_BASE)
   }
