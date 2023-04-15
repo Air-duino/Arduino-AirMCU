@@ -56,7 +56,7 @@ uint32_t spi_getClkFreqInst(SPI_TypeDef *spi_inst)
 {
   uint32_t spi_freq = SystemCoreClock;
   if (spi_inst != NP) {
-#if defined(AIR001C0xx) || defined(AIR001F0xx) || defined(AIR001G0xx)
+#if defined(AIR001C0xx) || defined(AIR001xx) || defined(AIR001G0xx)
     /* SPIx source CLK is PCKL1 */
     spi_freq = HAL_RCC_GetPCLK1Freq();
 #else
