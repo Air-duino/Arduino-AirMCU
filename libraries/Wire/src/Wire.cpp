@@ -86,8 +86,11 @@ void TwoWire::begin(uint8_t address, bool generalCall, bool NoStretchMode)
   _i2c.NoStretchMode = (NoStretchMode == true) ? 1 : 0;
 
   recoverBus(); // in case I2C bus (device) is stuck after a reset for example
-
+#ifdef AIR001xx
+  i2c_custom_init(&_i2c, 100000, 0xFFFFFFFF, 0x33);
+#else
   i2c_custom_init(&_i2c, 100000, I2C_ADDRESSINGMODE_7BIT, ownAddress);
+#endif
 
   if (_i2c.isMaster == 0) {
     // i2c_attachSlaveTxEvent(&_i2c, reinterpret_cast<void(*)(i2c_t*)>(&TwoWire::onRequestService));

@@ -637,7 +637,11 @@ static uint32_t i2c_getTiming(i2c_t *obj, uint32_t frequency)
   */
 void i2c_init(i2c_t *obj)
 {
+#ifdef AIR001xx
+  i2c_custom_init(obj, 100000, 0xFFFFFFFF, 0x33);
+#else
   i2c_custom_init(obj, 100000, I2C_ADDRESSINGMODE_7BIT, 0x33);
+#endif
 }
 
 /**
@@ -751,7 +755,16 @@ void i2c_custom_init(i2c_t *obj, uint32_t timing, uint32_t addressingMode, uint3
 
         handle->Instance             = obj->i2c;
 #ifdef I2C_TIMING
+#ifdef AIR001xx
+        handle->Init.ClockSpeed      = timing;
+        if (timing > 100000) {
+          handle->Init.DutyCycle       = I2C_DUTYCYCLE_16_9;
+        } else {
+          handle->Init.DutyCycle       = I2C_DUTYCYCLE_2;
+        }
+#else
         handle->Init.Timing          = i2c_getTiming(obj, timing);
+#endif
 #else
         handle->Init.ClockSpeed      = i2c_getTiming(obj, timing);
         /* Standard mode (sm) is up to 100kHz, then it's Fast mode (fm)     */
@@ -763,9 +776,13 @@ void i2c_custom_init(i2c_t *obj, uint32_t timing, uint32_t addressingMode, uint3
         }
 #endif
         handle->Init.OwnAddress1     = ownAddress;
+#ifdef AIR001xx //大概是Air001的I2C的HAL库结构体差了几个成员，所以用宏定义注释掉
+
+#else
         handle->Init.OwnAddress2     = 0;
         handle->Init.AddressingMode  = addressingMode;
         handle->Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+#endif
         handle->Init.GeneralCallMode = (obj->generalCall == 0) ? I2C_GENERALCALL_DISABLE : I2C_GENERALCALL_ENABLE;
         handle->Init.NoStretchMode   = (obj->NoStretchMode == 0) ? I2C_NOSTRETCH_DISABLE : I2C_NOSTRETCH_ENABLE;
 
@@ -818,7 +835,16 @@ void i2c_setTiming(i2c_t *obj, uint32_t frequency)
   __HAL_I2C_DISABLE(&(obj->handle));
 
 #ifdef I2C_TIMING
+#ifdef AIR001xx
+  obj->handle.Init.ClockSpeed = frequency;
+  if (f > 100000) {
+    obj->handle.Init.DutyCycle       = I2C_DUTYCYCLE_16_9;
+  } else {
+    obj->handle.Init.DutyCycle       = I2C_DUTYCYCLE_2;
+  }
+#else
   obj->handle.Init.Timing = f;
+#endif
 #else
   obj->handle.Init.ClockSpeed = f;
   /* Standard mode (sm) is up to 100kHz, then it's Fast mode (fm)     */
