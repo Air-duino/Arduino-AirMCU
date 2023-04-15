@@ -45,7 +45,7 @@ compiler.elf2bin.flags=-O binary
 compiler.elf2hex.flags=-O ihex
 
 # 编译器的链接参数compiler.ldflags
-compiler.ldflags=-Wl,--no-warn-rwx-segments # 消除 LOAD segment with RWX permissions 警告
+compiler.ldflags=
 compiler.size.cmd=arm-none-eabi-size
 compiler.define=-DARDUINO=
 

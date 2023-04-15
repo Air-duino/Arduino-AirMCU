@@ -13,6 +13,9 @@ menu.dbg=Debug symbols and core logs
 menu.rtlib=C Runtime Library
 menu.upload_method=Upload method
 
+menu.ClockSourceAndFrequency=Clock Source and Frequency
+menu.LowSpeedClockSource=Low Speed Clock Source
+
 ###############################
 # Air001 Dev
 ###############################
@@ -27,7 +30,7 @@ Air001Dev.upload.tool.default=AirISP
 
 Air001Dev.build.core=air001
 Air001Dev.build.board=AIR001_DEV
-Air001Dev.build.mcu=cortex-m0
+Air001Dev.build.mcu=cortex-m0plus
 Air001Dev.build.series=AIR001xx
 Air001Dev.build.cmsis_lib_gcc=arm_cortexM0l_math
 Air001Dev.build.product_line=AIR001
@@ -36,5 +39,77 @@ Air001Dev.build.air_extra_flags=-D{build.product_line} {build.enable_usb} {build
 
 Air001Dev.menu.UploadSpeed.115200=115200
 Air001Dev.menu.UploadSpeed.115200.upload.speed=115200
+Air001Dev.menu.UploadSpeed.57600=57600
+Air001Dev.menu.UploadSpeed.57600.upload.speed=57600
+Air001Dev.menu.UploadSpeed.38400=38400
+Air001Dev.menu.UploadSpeed.38400.upload.speed=38400
+Air001Dev.menu.UploadSpeed.19200=19200
+Air001Dev.menu.UploadSpeed.19200.upload.speed=19200
+Air001Dev.menu.UploadSpeed.9600=9600
+Air001Dev.menu.UploadSpeed.9600.upload.speed=9600
+Air001Dev.menu.UploadSpeed.4800=4800
+Air001Dev.menu.UploadSpeed.4800.upload.speed=4800
+Air001Dev.menu.UploadSpeed.2400=2400
+Air001Dev.menu.UploadSpeed.2400.upload.speed=2400
+Air001Dev.menu.UploadSpeed.1200=1200
+Air001Dev.menu.UploadSpeed.1200.upload.speed=1200
+
+# HSI/HSE选择和主频
+Air001Dev.menu.ClockSourceAndFrequency.HSI4M_HCLK4M=HSI 4Mhz, HCLK 4Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSI4M_HCLK4M.build.temp=-D{build.series}_HSI_4M_HCLK_4M
+Air001Dev.menu.ClockSourceAndFrequency.HSI4M_HCLK4M.build.f_cpu=4000000L
+
+Air001Dev.menu.ClockSourceAndFrequency.HSI8M_HCLK8M=HSI 8Mhz, HCLK 8Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSI8M_HCLK8M.build.temp=-D{build.series}_HSI_8M_HCLK_8M
+Air001Dev.menu.ClockSourceAndFrequency.HSI8M_HCLK8M.build.f_cpu=8000000L
+
+Air001Dev.menu.ClockSourceAndFrequency.HSI16M_HCLK16M=HSI 16Mhz, HCLK 16Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSI16M_HCLK16M.build.temp=-D{build.series}_HSI_16M_HCLK_16M
+Air001Dev.menu.ClockSourceAndFrequency.HSI16M_HCLK16M.build.f_cpu=16000000L
+
+Air001Dev.menu.ClockSourceAndFrequency.HSI22_12M_HCLK22_12M=HSI 22.12Mhz, HCLK 22.12Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSI22_12M_HCLK22_12M.build.temp=-D{build.series}_HSI_22_12M_HCLK_22_12M
+Air001Dev.menu.ClockSourceAndFrequency.HSI22_12M_HCLK22_12M.build.f_cpu=22120000L
+
+
+Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M=HSI 24Mhz, HCLK 24Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M.build.temp=-D{build.series}_HSI_24M_HCLK_24M
+Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M.build.f_cpu=24000000L
+
+Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK48M=HSI 24Mhz, HCLK 48Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK48M.build.temp=-D{build.series}_HSI_24M_HCLK_48M
+Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK48M.build.f_cpu=48000000L
+
+Air001Dev.menu.ClockSourceAndFrequency.HSE8M_HCLK8M=HSE 8Mhz, HCLK 8Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSE8M_HCLK8M.build.temp=-D{build.series}_HSE_8M_HCLK_8M
+Air001Dev.menu.ClockSourceAndFrequency.HSE8M_HCLK8M.build.f_cpu=8000000L
+
+Air001Dev.menu.ClockSourceAndFrequency.HSE16M_HCLK16M=HSE 16Mhz, HCLK 16Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSE16M_HCLK16M.build.temp=-D{build.series}_HSE_16M_HCLK_16M
+Air001Dev.menu.ClockSourceAndFrequency.HSE16M_HCLK16M.build.f_cpu=16000000L
+
+Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M=HSE 24Mhz, HCLK 24Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M.build.temp=-D{build.series}_HSE_24M_HCLK_24M
+Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M.build.f_cpu=24000000L
+
+Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK48M=HSE 24Mhz, HCLK 48Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK48M.build.temp=-D{build.series}_HSE_24M_HCLK_48M
+Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK48M.build.f_cpu=48000000L
+
+Air001Dev.menu.ClockSourceAndFrequency.HSE32M_HCLK32M=HSE 32Mhz, HCLK 32Mhz
+Air001Dev.menu.ClockSourceAndFrequency.HSE32M_HCLK32M.build.temp=-D{build.series}_HSE_32M_HCLK_32M
+Air001Dev.menu.ClockSourceAndFrequency.HSE32M_HCLK32M.build.f_cpu=32000000L
+
+Air001Dev.menu.LowSpeedClockSource.None=None
+Air001Dev.menu.LowSpeedClockSource.None.build.lsc_temp=-D{build.series}_LSC_NONE
+
+Air001Dev.menu.LowSpeedClockSource.LSI=LSI 32.768Khz
+Air001Dev.menu.LowSpeedClockSource.LSI.build.lsc_temp=-D{build.series}_LSC_LSI
+
+Air001Dev.menu.LowSpeedClockSource.LSE=LSE 32.768Khz
+Air001Dev.menu.LowSpeedClockSource.LSE.build.lsc_temp=-D{build.series}_LSC_LSE
+
+Air001Dev.build.extra_flags={build.temp} -DF_CPU={build.f_cpu} {build.lsc_temp}
+
 
 # Upload menu
