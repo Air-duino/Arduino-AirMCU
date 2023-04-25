@@ -30,7 +30,7 @@ Air001Dev.upload.maximum_data_size=4096
 Air001Dev.upload.tool=AirISP
 Air001Dev.upload.tool.default=AirISP
 
-Air001Dev.build.core=air001
+Air001Dev.build.core=AirMCU
 Air001Dev.build.board=AIR001_DEV
 Air001Dev.build.mcu=cortex-m0plus
 Air001Dev.build.series=AIR001xx
@@ -177,7 +177,7 @@ AirM2M_Air001_Board.upload.maximum_data_size=4096
 AirM2M_Air001_Board.upload.tool=AirISP
 AirM2M_Air001_Board.upload.tool.default=AirISP
 
-AirM2M_Air001_Board.build.core=air001
+AirM2M_Air001_Board.build.core=AirMCU
 AirM2M_Air001_Board.build.board=AirM2M_Air001_Board
 AirM2M_Air001_Board.build.mcu=cortex-m0plus
 AirM2M_Air001_Board.build.series=AIR001xx
