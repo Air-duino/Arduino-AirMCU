@@ -2,7 +2,7 @@
 #define _AIR_DEF_BUILD_
 
 #if !defined(CMSIS_STARTUP_FILE) && !defined(CUSTOM_STARTUP_FILE)
-  #if defined(ARDUINO_AIR001_DEV)
+  #if defined(AIR001_DEV)
     #define CMSIS_STARTUP_FILE "startup_air001xx.s"
   #else
     #error UNKNOWN CHIP

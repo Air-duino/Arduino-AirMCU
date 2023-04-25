@@ -163,3 +163,80 @@ Air001Dev.menu.SupplyVoltage.5V.build.sv_tmp=-DVDD_5V
 
 Air001Dev.build.extra_flags={build.temp} -DF_CPU={build.f_cpu} {build.lsc_temp} {build.sv_tmp}
 # Upload menu
+
+
+###############################
+# AirM2M Air001 Board
+###############################
+
+AirM2M_Air001_Board.name=AirM2M Air001 Board
+
+AirM2M_Air001_Board.upload.maximum_size=32768
+AirM2M_Air001_Board.upload.maximum_data_size=4096
+
+AirM2M_Air001_Board.upload.tool=AirISP
+AirM2M_Air001_Board.upload.tool.default=AirISP
+
+AirM2M_Air001_Board.build.core=air001
+AirM2M_Air001_Board.build.board=AirM2M_Air001_Board
+AirM2M_Air001_Board.build.mcu=cortex-m0plus
+AirM2M_Air001_Board.build.series=AIR001xx
+AirM2M_Air001_Board.build.cmsis_lib_gcc=arm_cortexM0l_math
+AirM2M_Air001_Board.build.product_line=AIR001
+AirM2M_Air001_Board.build.variant=AIR001/AirM2M_Air001_Board
+AirM2M_Air001_Board.build.air_extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial}
+
+AirM2M_Air001_Board.menu.UploadSpeed.115200=115200
+AirM2M_Air001_Board.menu.UploadSpeed.115200.upload.speed=115200
+AirM2M_Air001_Board.menu.UploadSpeed.57600=57600
+AirM2M_Air001_Board.menu.UploadSpeed.57600.upload.speed=57600
+AirM2M_Air001_Board.menu.UploadSpeed.38400=38400
+AirM2M_Air001_Board.menu.UploadSpeed.38400.upload.speed=38400
+AirM2M_Air001_Board.menu.UploadSpeed.19200=19200
+AirM2M_Air001_Board.menu.UploadSpeed.19200.upload.speed=19200
+AirM2M_Air001_Board.menu.UploadSpeed.9600=9600
+AirM2M_Air001_Board.menu.UploadSpeed.9600.upload.speed=9600
+AirM2M_Air001_Board.menu.UploadSpeed.4800=4800
+AirM2M_Air001_Board.menu.UploadSpeed.4800.upload.speed=4800
+AirM2M_Air001_Board.menu.UploadSpeed.2400=2400
+AirM2M_Air001_Board.menu.UploadSpeed.2400.upload.speed=2400
+AirM2M_Air001_Board.menu.UploadSpeed.1200=1200
+AirM2M_Air001_Board.menu.UploadSpeed.1200.upload.speed=1200
+
+AirM2M_Air001_Board.menu.xserial.generic=Enabled (generic 'Serial')
+AirM2M_Air001_Board.menu.xserial.none=Enabled (no generic 'Serial')
+AirM2M_Air001_Board.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
+AirM2M_Air001_Board.menu.xserial.disabled=Disabled (no Serial support)
+AirM2M_Air001_Board.menu.xserial.disabled.build.xSerial=
+
+# debug
+AirM2M_Air001_Board.menu.dbg.none=None
+AirM2M_Air001_Board.menu.dbg.enable_sym=Symbols Enabled (-g)
+AirM2M_Air001_Board.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
+AirM2M_Air001_Board.menu.dbg.enable_log=Core logs Enabled
+AirM2M_Air001_Board.menu.dbg.enable_log.build.flags.debug=
+AirM2M_Air001_Board.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
+AirM2M_Air001_Board.menu.dbg.enable_all.build.flags.debug=-g
+
+# optimize
+AirM2M_Air001_Board.menu.opt.osstd=Smallest (-Os default)
+AirM2M_Air001_Board.menu.opt.oslto=Smallest (-Os) with LTO
+AirM2M_Air001_Board.menu.opt.oslto.build.flags.optimize=-Os -flto
+AirM2M_Air001_Board.menu.opt.o1std=Fast (-O1)
+AirM2M_Air001_Board.menu.opt.o1std.build.flags.optimize=-O1
+AirM2M_Air001_Board.menu.opt.o1lto=Fast (-O1) with LTO
+AirM2M_Air001_Board.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+AirM2M_Air001_Board.menu.opt.o2std=Faster (-O2)
+AirM2M_Air001_Board.menu.opt.o2std.build.flags.optimize=-O2
+AirM2M_Air001_Board.menu.opt.o2lto=Faster (-O2) with LTO
+AirM2M_Air001_Board.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+AirM2M_Air001_Board.menu.opt.o3std=Fastest (-O3)
+AirM2M_Air001_Board.menu.opt.o3std.build.flags.optimize=-O3
+AirM2M_Air001_Board.menu.opt.o3lto=Fastest (-O3) with LTO
+AirM2M_Air001_Board.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+AirM2M_Air001_Board.menu.opt.ogstd=Debug (-Og)
+AirM2M_Air001_Board.menu.opt.ogstd.build.flags.optimize=-Og
+AirM2M_Air001_Board.menu.opt.o0std=No Optimization (-O0)
+AirM2M_Air001_Board.menu.opt.o0std.build.flags.optimize=-O0
+
+AirM2M_Air001_Board.build.extra_flags=-DAIR001xx_HSE_24M_HCLK_48M -DF_CPU=48000000 -DAIR001xx_LSC_LSI -DVDD_3V3 -DAIR001_DEV
