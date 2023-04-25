@@ -4,8 +4,8 @@
 
 #ifdef AIR001xx
   #include "air001xx_hal_cec.c"
-#elif AIRF1xx
-  #include "airf1xx_hal_cec.c"
+#elif AIR32F1xx
+  #include "AIR32F1xx_hal_cec.c"
 #elif AIRF3xx
   #include "airf3xx_hal_cec.c"
 #elif AIRF4xx

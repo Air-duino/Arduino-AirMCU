@@ -6,8 +6,8 @@
   #include "airc0xx_hal_adc_ex.c"
 #elif AIR001xx
   #include "air001xx_hal_adc_ex.c"
-#elif AIRF1xx
-  #include "airf1xx_hal_adc_ex.c"
+#elif AIR32F1xx
+  #include "AIR32F1xx_hal_adc_ex.c"
 #elif AIRF2xx
   #include "airf2xx_hal_adc_ex.c"
 #elif AIRF3xx

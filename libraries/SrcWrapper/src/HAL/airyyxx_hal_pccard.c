@@ -2,8 +2,8 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
-#ifdef AIRF1xx
-  #include "airf1xx_hal_pccard.c"
+#ifdef AIR32F1xx
+  #include "AIR32F1xx_hal_pccard.c"
 #elif AIRF2xx
   #include "airf2xx_hal_pccard.c"
 #elif AIRF3xx

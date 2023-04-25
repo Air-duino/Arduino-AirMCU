@@ -17,7 +17,7 @@ compiler.elf2hex.cmd=arm-none-eabi-objcopy
 compiler.libraries.ldflags=
 
 # 需要额外引入的头文件的路径
-compiler.air.extra_include="-I{build.source.path}" "-I{build.core.path}/avr" "-I{build.core.path}/air" "-I{build.core.path}/air/LL" "-I{build.core.path}/air/usb" "-I{build.core.path}/air/usb/hid" "-I{build.core.path}/air/usb/cdc" "-I{build.system.path}/Arduino-Air001-Drivers/{build.series}_HAL_Driver/Inc" "-I{build.system.path}/Arduino-Air001-Drivers/{build.series}_HAL_Driver/Src" "-I{build.system.path}/{build.series}" {build.virtio_extra_include}
+compiler.air.extra_include="-I{build.source.path}" "-I{build.core.path}/avr" "-I{build.core.path}/air" "-I{build.core.path}/air/LL" "-I{build.core.path}/air/usb" "-I{build.core.path}/air/usb/hid" "-I{build.core.path}/air/usb/cdc" {build.virtio_extra_include} {build.drivers_include}
 
 # 编译器警告的参数
 compiler.warning_flags=-w
@@ -70,7 +70,7 @@ compiler.ar.extra_flags=
 compiler.elf2bin.extra_flags=
 compiler.elf2hex.extra_flags=
 
-compiler.arm.cmsis.c.flags="-I{runtime.tools.CMSIS-5.7.0.path}/CMSIS/Core/Include/" "-I{build.system.path}/Arduino-Air001-Drivers/CMSIS/Device/{build.series}/Include/" "-I{build.system.path}/Arduino-Air001-Drivers/CMSIS/Device/{build.series}/Source/gcc/" "-I{runtime.tools.CMSIS-5.7.0.path}/CMSIS/DSP/Include" "-I{runtime.tools.CMSIS-5.7.0.path}/CMSIS/DSP/PrivateInclude"
+compiler.arm.cmsis.c.flags="-I{runtime.tools.CMSIS-5.7.0.path}/CMSIS/Core/Include/" "-I{runtime.tools.CMSIS-5.7.0.path}/CMSIS/DSP/Include" "-I{runtime.tools.CMSIS-5.7.0.path}/CMSIS/DSP/PrivateInclude"
 compiler.arm.cmsis.ldflags="-L{runtime.tools.CMSIS-5.7.0.path}/CMSIS/DSP/Lib/GCC/" -l{build.cmsis_lib_gcc}
 
 # USB Flags USB相关内容，暂时先不写，也许以后有了再说

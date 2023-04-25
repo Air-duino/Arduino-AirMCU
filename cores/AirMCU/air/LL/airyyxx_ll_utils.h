@@ -10,6 +10,8 @@
 
 #ifdef AIR001xx
   #include "air001xx_ll_utils.h"
+#elif defined(AIR32F103xx)
+  #include "air32f1xx_ll_utils.h"
 #endif
 #pragma GCC diagnostic pop
 #endif /* _AIRYYXX_LL_UTILS_H_ */

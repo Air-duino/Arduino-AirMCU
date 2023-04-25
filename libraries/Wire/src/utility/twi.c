@@ -54,7 +54,7 @@ extern "C" {
 #define SLAVE_MODE_LISTEN       2
 
 /* Generic definition for series requiring I2C timing calculation */
-#if !defined (AIRF1xx) && !defined (AIRF2xx) && !defined (AIRF4xx) &&\
+#if !defined (AIR32F1xx) && !defined (AIRF2xx) && !defined (AIRF4xx) &&\
     !defined (AIRL1xx)
 #define I2C_TIMING
 #endif

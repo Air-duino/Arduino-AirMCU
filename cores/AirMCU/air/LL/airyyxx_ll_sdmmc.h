@@ -8,7 +8,8 @@
   #pragma GCC diagnostic ignored "-Wregister"
 #endif
 
-#if 0 //#ifdefx xx //TODO
+#if AIR32F103xx
+  #include "air32f1xx_ll_sdmmc.h"
 #endif
 #pragma GCC diagnostic pop
 #endif /* _AIRYYXX_LL_SDMMC_H_ */

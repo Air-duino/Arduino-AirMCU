@@ -342,8 +342,8 @@ void uart_init(serial_t *obj, uint32_t baudrate, uint32_t databits, uint32_t par
   huart->Init.Mode         = UART_MODE_TX_RX;
   huart->Init.HwFlowCtl    = flow_control;
   huart->Init.OverSampling = UART_OVERSAMPLING_16;
-#if !defined(AIRF1xx) && !defined(AIRF2xx) && !defined(AIRF4xx)\
- && !defined(AIRL1xx)
+#if !defined(AIR32F1xx) && !defined(AIR32F2xx) && !defined(AIR32F4xx)\
+ && !defined(AIR32L1xx)
   huart->AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_NO_INIT;
 #endif
 #ifdef UART_ONE_BIT_SAMPLE_DISABLE
@@ -925,7 +925,7 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart)
   */
 void HAL_UART_ErrorCallback(UART_HandleTypeDef *huart)
 {
-#if defined(AIRF1xx) || defined(AIRF2xx) || defined(AIRF4xx) || defined(AIRL1xx)
+#if defined(AIR32F1xx) || defined(AIR32F2xx) || defined(AIR32F4xx) || defined(AIR32L1xx)
   if (__HAL_UART_GET_FLAG(huart, UART_FLAG_PE) != RESET) {
     __HAL_UART_CLEAR_PEFLAG(huart); /* Clear PE flag */
   } else if (__HAL_UART_GET_FLAG(huart, UART_FLAG_FE) != RESET) {

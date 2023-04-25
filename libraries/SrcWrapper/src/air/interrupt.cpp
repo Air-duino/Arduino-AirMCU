@@ -16,7 +16,7 @@ typedef struct {
 
 /* Private Variables */
 static gpio_irq_conf_str gpio_irq_conf[NB_EXTI] = {
-#if defined (AIRC0xx) || defined (AIR001xx) || defined (AIRG0xx) || defined (AIRL0xx)
+#if defined (AIR32C0xx) || defined (AIR001xx) || defined (AIR32G0xx) || defined (AIR32L0xx)
   {.irqnb = EXTI0_1_IRQn,   .callback = NULL}, //GPIO_PIN_0
   {.irqnb = EXTI0_1_IRQn,   .callback = NULL}, //GPIO_PIN_1
   {.irqnb = EXTI2_3_IRQn,   .callback = NULL}, //GPIO_PIN_2
@@ -33,7 +33,7 @@ static gpio_irq_conf_str gpio_irq_conf[NB_EXTI] = {
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}, //GPIO_PIN_13
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}, //GPIO_PIN_14
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}  //GPIO_PIN_15
-#elif defined (AIRMP1xx) || defined (AIRL5xx) || defined (AIRU5xx)
+#elif defined (AIR32MP1xx) || defined (AIR32L5xx) || defined (AIR32U5xx)
   {.irqnb = EXTI0_IRQn,     .callback = NULL}, //GPIO_PIN_0
   {.irqnb = EXTI1_IRQn,     .callback = NULL}, //GPIO_PIN_1
   {.irqnb = EXTI2_IRQn,     .callback = NULL}, //GPIO_PIN_2
@@ -94,12 +94,12 @@ static uint8_t get_pin_id(uint16_t pin)
 
   return id;
 }
-void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_t callback, uint32_t mode)
+void AIR32_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_t callback, uint32_t mode)
 {
   GPIO_InitTypeDef GPIO_InitStruct;
   uint8_t id = get_pin_id(pin);
 
-#ifdef AIRF1xx
+#ifdef AIR32F1xx
   uint8_t position;
   uint32_t CRxRegOffset = 0;
   uint32_t ODRRegOffset = 0;
@@ -107,7 +107,7 @@ void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_t 
   const uint32_t ConfigMask = 0x00000008; //MODE0 == 0x0 && CNF0 == 0x2
 #else
   uint32_t pull;
-#endif /* AIRF1xx */
+#endif /* AIR32F1xx */
 
   // GPIO pin configuration
   GPIO_InitStruct.Pin       = pin;
@@ -116,7 +116,7 @@ void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_t 
   //read the pull mode directly in the register as no function exists to get it.
   //Do it in case the user already defines the IO through the digital io
   //interface
-#ifndef AIRF1xx
+#ifndef AIR32F1xx
   pull = port->PUPDR;
 #ifdef GPIO_PUPDR_PUPD0
   pull &= (GPIO_PUPDR_PUPD0 << (id * 2));
@@ -144,7 +144,7 @@ void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_t 
   } else {
     GPIO_InitStruct.Pull = GPIO_NOPULL;
   }
-#endif /* AIRF1xx */
+#endif /* AIR32F1xx */
 
   GPIO_InitStruct.Speed     = GPIO_SPEED_FREQ_HIGH;
 
@@ -166,13 +166,13 @@ void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_t 
   * @param  port : one of the gpio port
   * @param  pin : one of the gpio pin
   **@param  callback : callback to call when the interrupt falls
-  * @param  mode : one of the supported interrupt mode defined in stm32_hal_gpio
+  * @param  mode : one of the supported interrupt mode defined in AIR32_hal_gpio
   * @retval None
   */
-void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, void (*callback)(void), uint32_t mode)
+void AIR32_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, void (*callback)(void), uint32_t mode)
 {
   std::function<void(void)> _c = callback;
-  air_interrupt_enable(port, pin, _c, mode);
+  AIR32_interrupt_enable(port, pin, _c, mode);
 
 }
 
@@ -182,7 +182,7 @@ void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, void (*callback)(voi
   * @param  pin : one of the gpio pin
   * @retval None
   */
-void stm32_interrupt_disable(GPIO_TypeDef *port, uint16_t pin)
+void AIR32_interrupt_disable(GPIO_TypeDef *port, uint16_t pin)
 {
   UNUSED(port);
   uint8_t id = get_pin_id(pin);
@@ -194,8 +194,11 @@ void stm32_interrupt_disable(GPIO_TypeDef *port, uint16_t pin)
       return;
     }
   }
-
+#ifndef AIR001xx
+  LL_EXTI_DisableIT_0_31(ll_exti_lines[id]);
+#else
   LL_EXTI_DisableIT(ll_exti_lines[id]);
+#endif /* AIR001xx */
   HAL_NVIC_DisableIRQ(gpio_irq_conf[id].irqnb);
 }
 
@@ -213,7 +216,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   }
 }
 
-#if defined(AIRC0xx) || defined(AIRG0xx) || defined(AIRMP1xx) || defined(AIRL5xx) || defined(AIRU5xx)
+#if defined(AIR32C0xx) || defined(AIR32G0xx) || defined(AIR32MP1xx) || defined(AIR32L5xx) || defined(AIR32U5xx)
 /**
   * @brief  EXTI line detection callback.
   * @param  GPIO_Pin Specifies the port pin connected to corresponding EXTI line.
@@ -235,7 +238,7 @@ void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin)
 }
 #endif
 
-#if defined (AIRC0xx) || (AIR001xx) || defined (AIRG0xx) || defined (AIRL0xx)
+#if defined (AIR32C0xx) || (AIR001xx) || defined (AIR32G0xx) || defined (AIR32L0xx)
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -336,7 +339,7 @@ void EXTI4_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_4);
 }
 
-#if !defined(AIRMP1xx) && !defined(AIRL5xx) && !defined(AIRU5xx)
+#if !defined(AIR32MP1xx) && !defined(AIR32L5xx) && !defined(AIR32U5xx)
 /**
   * @brief This function handles external line 5 to 9 interrupt request.
   * @param  None
@@ -362,7 +365,7 @@ void EXTI15_10_IRQHandler(void)
     HAL_GPIO_EXTI_IRQHandler(pin);
   }
 }
-#else /* AIRMP1xx && AIRL5xx && AIRU5xx */
+#else /* AIR32MP1xx && AIR32L5xx && AIR32U5xx */
 
 /**
   * @brief This function handles external line 5 interrupt request.
@@ -474,10 +477,10 @@ void EXTI15_IRQHandler(void)
   HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_15);
 }
 
-#endif /* !AIRMP1xx && !AIRL5xx */
+#endif /* !AIR32MP1xx && !AIR32L5xx */
 #ifdef __cplusplus
 }
 #endif
 #endif /* !HAL_EXTI_MODULE_DISABLED */
 #endif
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+/************************ (C) COPYRIGHT AirM2M *****END OF FILE****/

@@ -1,0 +1,10 @@
+# This file help to add generic board entry.
+# upload.maximum_size and product_line have to be verified
+# and changed if needed.
+
+# Air32F103xx
+Air32F103xx.menu.pnum.AIR32F103CB=Air32F103CBT6
+Air32F103xx.menu.pnum.AIR32F103CB.upload.maximum_size=131072
+Air32F103xx.menu.pnum.AIR32F103CB.build.product_line=AIR32F103xB
+Air32F103xx.menu.pnum.AIR32F103CB.build.board=AIR32F103CB
+Air32F103xx.menu.pnum.AIR32F103CB.build.variant=AIR32F103/F103CB

@@ -106,7 +106,7 @@ void analogReadResolution(int res)
         }
 #endif
 #else
-      /* AIRF1xx have no ADC_RESOLUTION_xB */
+      /* AIR32F1xx have no ADC_RESOLUTION_xB */
       _internalReadResolution = 12;
 #endif
     }

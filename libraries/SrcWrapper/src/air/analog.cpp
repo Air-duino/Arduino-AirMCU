@@ -624,9 +624,9 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
 #ifdef __HAL_RCC_ADC_CLK_ENABLE
   __HAL_RCC_ADC_CLK_ENABLE();
 #endif
-  /* For AIRF1xx, AIRH7xx, and AIRMP1xx ADC prescaler is configured in
+  /* For AIR32F1xx, AIRH7xx, and AIRMP1xx ADC prescaler is configured in
      SystemClock_Config (variant.cpp) */
-#if defined(__HAL_RCC_ADC_CONFIG) && !defined(AIRF1xx) && \
+#if defined(__HAL_RCC_ADC_CONFIG) && !defined(AIR32F1xx) && \
     !defined(AIRH7xx) && !defined(AIRMP1xx)
   hsem_lock(CFG_HW_RCC_CRRCR_CCIPR_SEMID, HSEM_LOCK_DEFAULT_RETRY);
   /* ADC Periph interface clock configuration */
@@ -862,11 +862,11 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
 #ifdef ADC_EOC_SINGLE_CONV
   AdcHandle.Init.EOCSelection          = ADC_EOC_SINGLE_CONV;           /* EOC flag picked-up to indicate conversion end */
 #endif
-#if !defined(AIRF1xx) && !defined(AIRF2xx) && !defined(AIRF4xx) && \
+#if !defined(AIR32F1xx) && !defined(AIRF2xx) && !defined(AIRF4xx) && \
     !defined(AIRF7xx) && !defined(ADC1_V2_5)
   AdcHandle.Init.LowPowerAutoWait      = DISABLE;                       /* Auto-delayed conversion feature disabled */
 #endif
-#if !defined(AIRF1xx) && !defined(AIRF2xx) && !defined(AIRF3xx) && \
+#if !defined(AIR32F1xx) && !defined(AIRF2xx) && !defined(AIRF3xx) && \
     !defined(AIRF4xx) && !defined(AIRF7xx) && !defined(AIRG4xx) && \
     !defined(AIRH7xx) && !defined(AIRL4xx) && !defined(AIRL5xx) && \
     !defined(AIRMP1xx) && !defined(AIRWBxx) ||  defined(ADC_SUPPORT_2_5_MSPS)
@@ -887,10 +887,10 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
   AdcHandle.Init.NbrOfDiscConversion   = 0;                             /* Parameter discarded because sequencer is disabled */
 #endif
   AdcHandle.Init.ExternalTrigConv      = ADC_SOFTWARE_START;            /* Software start to trig the 1st conversion manually, without external event */
-#if !defined(AIRF1xx) && !defined(ADC1_V2_5)
+#if !defined(AIR32F1xx) && !defined(ADC1_V2_5)
   AdcHandle.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE; /* Parameter discarded because software trigger chosen */
 #endif
-#if !defined(AIRF1xx) && !defined(AIRH7xx) && !defined(AIRMP1xx) && \
+#if !defined(AIR32F1xx) && !defined(AIRH7xx) && !defined(AIRMP1xx) && \
     !defined(ADC1_V2_5)
   AdcHandle.Init.DMAContinuousRequests = DISABLE;                       /* DMA one-shot mode selected (not applied to this example) */
 #endif
@@ -916,7 +916,7 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
   AdcHandle.Init.LowPowerFrequencyMode = DISABLE;                       /* To be enabled only if ADC clock < 2.8 MHz */
   AdcHandle.Init.SamplingTime          = samplingTime;
 #endif
-#if !defined(AIR001xx) && !defined(AIRF1xx) && !defined(AIRF2xx) && \
+#if !defined(AIR001xx) && !defined(AIR32F1xx) && !defined(AIRF2xx) && \
     !defined(AIRF3xx) && !defined(AIRF4xx) && !defined(AIRF7xx) && \
     !defined(AIRL1xx) && !defined(ADC_SUPPORT_2_5_MSPS)
   AdcHandle.Init.OversamplingMode      = DISABLE;
@@ -970,7 +970,7 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
   AdcChannelConf.SingleDiff   = ADC_SINGLE_ENDED;                 /* Single-ended input channel */
   AdcChannelConf.OffsetNumber = ADC_OFFSET_NONE;                  /* No offset subtraction */
 #endif
-#if !defined(AIRC0xx) && !defined(AIR001xx) && !defined(AIRF1xx) && \
+#if !defined(AIRC0xx) && !defined(AIR001xx) && !defined(AIR32F1xx) && \
     !defined(AIRF2xx) && !defined(AIRG0xx) && !defined(AIRL0xx) && \
     !defined(AIRL1xx) && !defined(AIRWBxx) && !defined(AIRWLxx) && \
     !defined(ADC1_V2_5)

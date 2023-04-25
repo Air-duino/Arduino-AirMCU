@@ -718,7 +718,7 @@ void HardwareTimer::setMode(uint32_t channel, TimerModes_t mode, PinName pin)
     if ((int)getTimerChannel(pin) == timChannel) {
       /* Configure PWM GPIO pins */
       pinmap_pinout(pin, PinMap_TIM);
-#if defined(AIRF1xx)
+#if defined(AIR32F1xx)
       if ((mode == TIMER_INPUT_CAPTURE_RISING) || (mode == TIMER_INPUT_CAPTURE_FALLING) \
           || (mode == TIMER_INPUT_CAPTURE_BOTHEDGE) || (mode == TIMER_INPUT_FREQ_DUTY_MEASUREMENT)) {
         // on F1 family, input alternate function must configure GPIO in input mode
@@ -1500,7 +1500,7 @@ extern "C" {
 
 #if defined(TIM1_BASE)
   /**
-    * @brief  TIM1 IRQHandler common with TIM10 and TIM16 on some AIRF1xx
+    * @brief  TIM1 IRQHandler common with TIM10 and TIM16 on some AIR32F1xx
     * @param  None
     * @retval None
     */
@@ -1510,7 +1510,7 @@ extern "C" {
       HAL_TIM_IRQHandler(&HardwareTimer_Handle[TIMER1_INDEX]->handle);
     }
 
-#if defined(AIRF1xx) || defined(AIRF2xx) || defined(AIRF4xx) || defined(AIRF7xx)
+#if defined(AIR32F1xx) || defined(AIRF2xx) || defined(AIRF4xx) || defined(AIRF7xx)
 #if defined (TIM10_BASE)
     if (HardwareTimer_Handle[TIMER10_INDEX]) {
       HAL_TIM_IRQHandler(&HardwareTimer_Handle[TIMER10_INDEX]->handle);
@@ -1518,7 +1518,7 @@ extern "C" {
 #endif
 #endif
 
-#if defined(AIRF1xx) || defined(AIRF3xx) || defined(AIRG4xx) || defined(AIRL4xx) || \
+#if defined(AIR32F1xx) || defined(AIRF3xx) || defined(AIRG4xx) || defined(AIRL4xx) || \
     defined(AIRWBxx)
 #if defined (TIM16_BASE)
     if (HardwareTimer_Handle[TIMER16_INDEX]) {
@@ -1639,7 +1639,7 @@ extern "C" {
       HAL_TIM_IRQHandler(&HardwareTimer_Handle[TIMER8_INDEX]->handle);
     }
 
-#if defined(AIRF1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx) || defined(AIRH7xx)
+#if defined(AIR32F1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx) || defined(AIRH7xx)
 #if defined(TIM13_BASE)
     if (HardwareTimer_Handle[TIMER13_INDEX]) {
       HAL_TIM_IRQHandler(&HardwareTimer_Handle[TIMER13_INDEX]->handle);
@@ -1671,7 +1671,7 @@ extern "C" {
 #endif //TIM9_BASE
 
 #if defined(TIM10_BASE)
-#if !defined(AIRF1xx) && !defined(AIRF2xx) && !defined(AIRF4xx) && !defined(AIRF7xx)
+#if !defined(AIR32F1xx) && !defined(AIRF2xx) && !defined(AIRF4xx) && !defined(AIRF7xx)
   /**
     * @brief  TIM10 IRQHandler
     * @param  None
@@ -1715,7 +1715,7 @@ extern "C" {
 #endif //TIM12_BASE
 
 #if defined(TIM13_BASE)
-#if !defined(AIRF1xx) && !defined(AIRF2xx) && !defined(AIRF4xx) && !defined(AIRF7xx) && !defined(AIRH7xx)
+#if !defined(AIR32F1xx) && !defined(AIRF2xx) && !defined(AIRF4xx) && !defined(AIRF7xx) && !defined(AIRH7xx)
   /**
     * @brief  TIM13 IRQHandler
     * @param  None
@@ -1759,7 +1759,7 @@ extern "C" {
 #endif //TIM15_BASE
 
 #if defined(TIM16_BASE)
-#if !defined(AIRF1xx) && !defined(AIRF3xx) && !defined(AIRG4xx) && !defined(AIRL4xx)
+#if !defined(AIR32F1xx) && !defined(AIRF3xx) && !defined(AIRG4xx) && !defined(AIRL4xx)
   /**
     * @brief  TIM16 IRQHandler
     * @param  None

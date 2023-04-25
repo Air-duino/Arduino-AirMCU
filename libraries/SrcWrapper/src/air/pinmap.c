@@ -60,7 +60,7 @@ static void configure_dualpad_switch(PinName pin, int function, uint32_t LL_Anal
     return ;
   }
 
-  if (((function & STM_MODE_ANALOG) != STM_MODE_ANALOG)
+  if (((function & AIR_MODE_ANALOG) != AIR_MODE_ANALOG)
       && ((pin & PDUAL) == PDUAL)) {
     /**
       * We don't configure an analog function but the pin is an analog pad
@@ -95,7 +95,7 @@ static bool is_dualpad_switch_gpio_configurable(PinName pin, int function, uint3
     /* Check whether pin is or is associated to dualpad Analog Input */
     if ((AnalogSwitch->pin | PDUAL)  == (pin | PDUAL)) {
       *pLL_AnalogSwitch = AnalogSwitch->LL_AnalogSwitch;
-      if (((function & STM_MODE_ANALOG) == STM_MODE_ANALOG)
+      if (((function & AIR_MODE_ANALOG) == AIR_MODE_ANALOG)
           && ((pin & PDUAL) == PDUAL)) {
         /**
          * We configure an analog function and the pin is an analog pad Pxy_C
@@ -200,7 +200,7 @@ void pin_function(PinName pin, int function)
    *  not so important, register can be set at any time.
    *  But for families like F1, speed only applies to output.
    */
-#if defined (AIRF1xx)
+#if defined (AIR32F1xx)
   if (mode == AIR_PIN_OUTPUT) {
 #endif
 #ifdef LL_GPIO_SPEED_FREQ_VERY_HIGH
@@ -208,14 +208,14 @@ void pin_function(PinName pin, int function)
 #else
     LL_GPIO_SetPinSpeed(gpio, ll_pin, LL_GPIO_SPEED_FREQ_HIGH);
 #endif
-#if defined (AIRF1xx)
+#if defined (AIR32F1xx)
   }
 #endif
 
   switch (mode) {
     case AIR_PIN_INPUT:
       ll_mode = LL_GPIO_MODE_INPUT;
-#if defined(AIRF1xx)
+#if defined(AIR32F1xx)
       // on F1 family, input mode may be associated with an alternate function
       pin_SetAFPin(gpio, pin, afnum);
 #endif

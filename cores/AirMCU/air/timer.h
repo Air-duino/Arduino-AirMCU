@@ -40,7 +40,7 @@ extern "C" {
 #if defined(AIRC0xx) || defined(AIR001xx) || defined(AIRG0xx)
 #define TIM1_IRQn TIM1_BRK_UP_TRG_COM_IRQn
 #define TIM1_IRQHandler TIM1_BRK_UP_TRG_COM_IRQHandler
-#elif defined(AIRF1xx) ||defined(AIRG4xx)
+#elif defined(AIR32F1xx) ||defined(AIRG4xx)
 #define TIM1_IRQn TIM1_UP_TIM16_IRQn
 #if !defined (TIM10_BASE)
 #define TIM1_IRQHandler TIM1_UP_TIM16_IRQHandler
@@ -84,7 +84,7 @@ extern "C" {
 #if defined(AIRG0xx)
 #define TIM6_IRQn TIM6_DAC_LPTIM1_IRQn
 #define TIM6_IRQHandler TIM6_DAC_LPTIM1_IRQHandler
-#elif !defined(AIRF1xx) && !defined(AIRL1xx) && !defined(AIRL5xx) &&\
+#elif !defined(AIR32F1xx) && !defined(AIRL1xx) && !defined(AIRL5xx) &&\
       !defined(AIRMP1xx) && !defined(AIRU5xx)
 #define TIM6_IRQn TIM6_DAC_IRQn
 #define TIM6_IRQHandler TIM6_DAC_IRQHandler
@@ -103,7 +103,7 @@ extern "C" {
 #endif
 
 #if defined(TIM8_BASE) && !defined(TIM8_IRQn)
-#if defined(AIRF1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)\
+#if defined(AIR32F1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)\
  || defined(AIRH7xx)
 #define TIM8_IRQn TIM8_UP_TIM13_IRQn
 #define TIM8_IRQHandler TIM8_UP_TIM13_IRQHandler
@@ -115,51 +115,51 @@ extern "C" {
 #endif
 
 #if defined(TIM9_BASE) && !defined(TIM9_IRQn)
-#if defined(AIRF1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)
+#if defined(AIR32F1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)
 #define TIM9_IRQn TIM1_BRK_TIM9_IRQn
 #define TIM9_IRQHandler TIM1_BRK_TIM9_IRQHandler
 #endif
 #endif
 #if defined(TIM10_BASE) && !defined(TIM10_IRQn)
-#if defined(AIRF1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)
+#if defined(AIR32F1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)
 #define TIM10_IRQn TIM1_UP_TIM10_IRQn
 //TIM10_IRQHandler is mapped on TIM1_IRQHandler  when TIM10_IRQn is not defined
 #endif
 #endif
 #if defined(TIM11_BASE) && !defined(TIM11_IRQn)
-#if defined(AIRF1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)
+#if defined(AIR32F1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)
 #define TIM11_IRQn TIM1_TRG_COM_TIM11_IRQn
 #define TIM11_IRQHandler TIM1_TRG_COM_TIM11_IRQHandler
 #endif
 #endif
 #if defined(TIM12_BASE) && !defined(TIM12_IRQn)
-#if defined(AIRF1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)\
+#if defined(AIR32F1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)\
  || defined(AIRH7xx)
 #define TIM12_IRQn TIM8_BRK_TIM12_IRQn
 #define TIM12_IRQHandler TIM8_BRK_TIM12_IRQHandler
 #endif
 #endif
 #if defined(TIM13_BASE) && !defined(TIM13_IRQn)
-#if defined(AIRF1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)\
+#if defined(AIR32F1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)\
  || defined(AIRH7xx)
 #define TIM13_IRQn TIM8_UP_TIM13_IRQn
 #endif
 #endif
 #if defined(TIM14_BASE) && !defined(TIM14_IRQn)
-#if defined(AIRF1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)\
+#if defined(AIR32F1xx) || defined(AIRF2xx) ||defined(AIRF4xx) || defined(AIRF7xx)\
  || defined(AIRH7xx)
 #define TIM14_IRQn TIM8_TRG_COM_TIM14_IRQn
 #define TIM14_IRQHandler TIM8_TRG_COM_TIM14_IRQHandler
 #endif
 #endif
 #if defined(TIM15_BASE) && !defined(TIM15_IRQn)
-#if defined(AIRF1xx) || defined(AIRF3xx) || defined(AIRG4xx) || defined(AIRL4xx)
+#if defined(AIR32F1xx) || defined(AIRF3xx) || defined(AIRG4xx) || defined(AIRL4xx)
 #define TIM15_IRQn TIM1_BRK_TIM15_IRQn
 #define TIM15_IRQHandler TIM1_BRK_TIM15_IRQHandler
 #endif
 #endif
 #if defined(TIM16_BASE) && !defined(TIM16_IRQn)
-#if defined(AIRF1xx) || defined(AIRF3xx)  || defined(AIRG4xx) || defined(AIRL4xx) || \
+#if defined(AIR32F1xx) || defined(AIRF3xx)  || defined(AIRG4xx) || defined(AIRL4xx) || \
     defined(AIRWBxx)
 #define TIM16_IRQn TIM1_UP_TIM16_IRQn
 //TIM16_IRQHandler is mapped on TIM1_IRQHandler when TIM16_IRQn is not defined
@@ -169,7 +169,7 @@ extern "C" {
 #endif
 #endif
 #if defined(TIM17_BASE) && !defined(TIM17_IRQn)
-#if defined(AIRF1xx) || defined(AIRF3xx) || defined(AIRG4xx) || defined(AIRL4xx) || \
+#if defined(AIR32F1xx) || defined(AIRF3xx) || defined(AIRG4xx) || defined(AIRL4xx) || \
     defined(AIRWBxx)
 #define TIM17_IRQn TIM1_TRG_COM_TIM17_IRQn
 #define TIM17_IRQHandler TIM1_TRG_COM_TIM17_IRQHandler

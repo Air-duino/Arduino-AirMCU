@@ -5,9 +5,9 @@
 #ifdef AIR001xx
   #include "Legacy/air001xx_hal_can.c"
   #include "air001xx_hal_can.c"
-#elif AIRF1xx
-  #include "Legacy/airf1xx_hal_can.c"
-  #include "airf1xx_hal_can.c"
+#elif AIR32F1xx
+  #include "Legacy/AIR32F1xx_hal_can.c"
+  #include "AIR32F1xx_hal_can.c"
 #elif AIRF2xx
   #include "Legacy/airf2xx_hal_can.c"
   #include "airf2xx_hal_can.c"

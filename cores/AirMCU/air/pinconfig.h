@@ -21,22 +21,22 @@
 
 static inline void pin_DisconnectDebug(PinName pin)
 {
-#ifdef AIRF1xx
+#ifdef AIR32F1xx
   pinF1_DisconnectDebug(pin);
 #else
   UNUSED(pin);
-#endif /* AIRF1xx */
+#endif /* AIR32F1xx */
 }
 
 static inline void pin_PullConfig(GPIO_TypeDef *gpio, uint32_t ll_pin, uint32_t pull_config)
 {
-#ifdef AIRF1xx
+#ifdef AIR32F1xx
   uint32_t function = LL_GPIO_GetPinMode(gpio, ll_pin);
 #endif
   hsem_lock(CFG_HW_GPIO_SEMID, HSEM_LOCK_DEFAULT_RETRY);
   switch (pull_config) {
     case GPIO_PULLUP:
-#ifdef AIRF1xx
+#ifdef AIR32F1xx
       if (function == LL_GPIO_MODE_FLOATING) {
         LL_GPIO_SetPinMode(gpio, ll_pin, LL_GPIO_MODE_INPUT);
       }
@@ -44,7 +44,7 @@ static inline void pin_PullConfig(GPIO_TypeDef *gpio, uint32_t ll_pin, uint32_t 
       LL_GPIO_SetPinPull(gpio, ll_pin, LL_GPIO_PULL_UP);
       break;
     case GPIO_PULLDOWN:
-#ifdef AIRF1xx
+#ifdef AIR32F1xx
       if (function == LL_GPIO_MODE_FLOATING) {
         LL_GPIO_SetPinMode(gpio, ll_pin, LL_GPIO_MODE_INPUT);
       }
@@ -52,7 +52,7 @@ static inline void pin_PullConfig(GPIO_TypeDef *gpio, uint32_t ll_pin, uint32_t 
       LL_GPIO_SetPinPull(gpio, ll_pin, LL_GPIO_PULL_DOWN);
       break;
     default:
-#ifdef AIRF1xx
+#ifdef AIR32F1xx
       /*  Input+NoPull = Floating for F1 family */
       if (function == LL_GPIO_MODE_INPUT) {
         LL_GPIO_SetPinMode(gpio, ll_pin, LL_GPIO_MODE_FLOATING);
@@ -67,7 +67,7 @@ static inline void pin_PullConfig(GPIO_TypeDef *gpio, uint32_t ll_pin, uint32_t 
 
 static inline void pin_SetAFPin(GPIO_TypeDef *gpio, PinName pin, uint32_t afnum)
 {
-#ifdef AIRF1xx
+#ifdef AIR32F1xx
   UNUSED(gpio);
   UNUSED(pin);
   pin_SetF1AFPin(afnum);

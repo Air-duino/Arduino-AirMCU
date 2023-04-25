@@ -31,7 +31,7 @@
 #ifndef _PINAF_AIRF1_H
 #define _PINAF_AIRF1_H
 
-#ifdef AIRF1xx
+#ifdef AIR32F1xx
 
 #ifdef __cplusplus
 extern "C" {
@@ -511,6 +511,6 @@ static inline void pin_SetF1AFPin(uint32_t afnum)
 }
 #endif
 
-#endif /* AIRF1xx */
+#endif /* AIR32F1xx */
 
 #endif /* _PINAF_AIRF1_H */

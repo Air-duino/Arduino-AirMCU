@@ -152,7 +152,7 @@ PinName analogInputToPinName(uint32_t pin);
 #endif
 
 
-#if defined(AIRF1xx)
+#if defined(AIR32F1xx)
 /*
  * Config registers split in 2 registers:
  * CRL: pin 0..7

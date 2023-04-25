@@ -24,6 +24,8 @@
 
 #if defined(AIR001xx)
   #include "air001xx.h"
+#elif defined(AIR32F103xx)
+  #include "air32f1xx.h"
 #else
   #error "AIRYYxx chip series is not defined in boards.txt."
 #endif

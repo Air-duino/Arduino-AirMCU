@@ -32,7 +32,7 @@
 #define _PERIPHERALPINS_H
 
 #include "pinmap.h"
-#ifdef AIRF1xx
+#ifdef AIR32F1xx
   #include "PinAF_AIRF1.h"
 #endif
 

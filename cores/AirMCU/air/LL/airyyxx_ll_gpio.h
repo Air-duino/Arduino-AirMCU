@@ -10,6 +10,8 @@
 
 #ifdef AIR001xx
   #include "air001xx_ll_gpio.h"
+#elif defined(AIR32F103xx)
+  #include "air32f1xx_ll_gpio.h"
 #endif
 #pragma GCC diagnostic pop
 #endif /* _AIRYYXX_LL_GPIO_H_ */
