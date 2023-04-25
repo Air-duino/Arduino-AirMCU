@@ -126,4 +126,25 @@ Air001Dev.menu.dbg.enable_log.build.flags.debug=
 Air001Dev.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
 Air001Dev.menu.dbg.enable_all.build.flags.debug=-g
 
+# optimize
+Air001Dev.menu.opt.osstd=Smallest (-Os default)
+Air001Dev.menu.opt.oslto=Smallest (-Os) with LTO
+Air001Dev.menu.opt.oslto.build.flags.optimize=-Os -flto
+Air001Dev.menu.opt.o1std=Fast (-O1)
+Air001Dev.menu.opt.o1std.build.flags.optimize=-O1
+Air001Dev.menu.opt.o1lto=Fast (-O1) with LTO
+Air001Dev.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+Air001Dev.menu.opt.o2std=Faster (-O2)
+Air001Dev.menu.opt.o2std.build.flags.optimize=-O2
+Air001Dev.menu.opt.o2lto=Faster (-O2) with LTO
+Air001Dev.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+Air001Dev.menu.opt.o3std=Fastest (-O3)
+Air001Dev.menu.opt.o3std.build.flags.optimize=-O3
+Air001Dev.menu.opt.o3lto=Fastest (-O3) with LTO
+Air001Dev.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+Air001Dev.menu.opt.ogstd=Debug (-Og)
+Air001Dev.menu.opt.ogstd.build.flags.optimize=-Og
+Air001Dev.menu.opt.o0std=No Optimization (-O0)
+Air001Dev.menu.opt.o0std.build.flags.optimize=-O0
+
 # Upload menu
