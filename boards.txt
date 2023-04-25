@@ -16,6 +16,8 @@ menu.upload_method=Upload method
 menu.ClockSourceAndFrequency=Clock Source and Frequency
 menu.LowSpeedClockSource=Low Speed Clock Source
 
+menu.SupplyVoltage=Supply Voltage
+
 ###############################
 # Air001 Dev
 ###############################
@@ -109,8 +111,6 @@ Air001Dev.menu.LowSpeedClockSource.LSI.build.lsc_temp=-D{build.series}_LSC_LSI
 Air001Dev.menu.LowSpeedClockSource.LSE=LSE 32.768Khz
 Air001Dev.menu.LowSpeedClockSource.LSE.build.lsc_temp=-D{build.series}_LSC_LSE
 
-Air001Dev.build.extra_flags={build.temp} -DF_CPU={build.f_cpu} {build.lsc_temp}
-
 Air001Dev.menu.xserial.generic=Enabled (generic 'Serial')
 Air001Dev.menu.xserial.none=Enabled (no generic 'Serial')
 Air001Dev.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
@@ -147,4 +147,19 @@ Air001Dev.menu.opt.ogstd.build.flags.optimize=-Og
 Air001Dev.menu.opt.o0std=No Optimization (-O0)
 Air001Dev.menu.opt.o0std.build.flags.optimize=-O0
 
+Air001Dev.menu.SupplyVoltage.3V3=3.3V
+Air001Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_3V3
+Air001Dev.menu.SupplyVoltage.1V8=1.8V
+Air001Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_1V8
+Air001Dev.menu.SupplyVoltage.2V5=2.5V
+Air001Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_2V5
+Air001Dev.menu.SupplyVoltage.2V8=2.8V
+Air001Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_2V8
+Air001Dev.menu.SupplyVoltage.3V8=3.8V
+Air001Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_3V8
+Air001Dev.menu.SupplyVoltage.5V=5V
+Air001Dev.menu.SupplyVoltage.5V.build.sv_tmp=-DVDD_5V
+
+
+Air001Dev.build.extra_flags={build.temp} -DF_CPU={build.f_cpu} {build.lsc_temp} {build.sv_tmp}
 # Upload menu

@@ -137,6 +137,26 @@
   #define PIN_SERIAL_TX         PA2
 #endif
 
+#ifdef VDD_VALUE
+#undef VDD_VALUE
+#endif
+#if defined(VDD_1V8)
+#define VDD_VALUE 1800U
+#elif defined(VDD_2V5)
+#define VDD_VALUE 2500U
+#elif defined(VDD_2V8)
+#define VDD_VALUE 2800U
+#elif defined(VDD_3V3)
+#define VDD_VALUE 3300U
+#elif defined(VDD_3V8)
+#define VDD_VALUE 3800U
+#elif defined(VDD_5V)
+#define VDD_VALUE 5000U
+
+#else
+#error "VDD_VALUE is not defined"
+#endif
+
 /*----------------------------------------------------------------------------
  *        Arduino objects - C++ only
  *----------------------------------------------------------------------------*/
