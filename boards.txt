@@ -117,4 +117,13 @@ Air001Dev.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_N
 Air001Dev.menu.xserial.disabled=Disabled (no Serial support)
 Air001Dev.menu.xserial.disabled.build.xSerial=
 
+# debug
+Air001Dev.menu.dbg.none=None
+Air001Dev.menu.dbg.enable_sym=Symbols Enabled (-g)
+Air001Dev.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
+Air001Dev.menu.dbg.enable_log=Core logs Enabled
+Air001Dev.menu.dbg.enable_log.build.flags.debug=
+Air001Dev.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
+Air001Dev.menu.dbg.enable_all.build.flags.debug=-g
+
 # Upload menu
