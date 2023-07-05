@@ -5,7 +5,7 @@
   #if defined(AIR001_DEV)
     #define CMSIS_STARTUP_FILE "startup_air001xx.s"
   #elif defined(AIR32F103xx)
-    #define CMSIS_STARTUP_FILE "startup_air32f1xx.s"
+    #define CMSIS_STARTUP_FILE "startup_air32f10x.s"
   #else
     #error UNKNOWN CHIP
   #endif
