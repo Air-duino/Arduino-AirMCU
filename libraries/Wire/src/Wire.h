@@ -35,7 +35,7 @@ extern "C" {
 // Note: Buffer length and max buffer length are limited by uin16_t type
 #define BUFFER_LENGTH 32
 #if !defined(WIRE_MAX_TX_BUFF_LENGTH)
-  #define WIRE_MAX_TX_BUFF_LENGTH       1024U
+  #define WIRE_MAX_TX_BUFF_LENGTH       512U
 #endif
 
 // WIRE_HAS_END means Wire has end()

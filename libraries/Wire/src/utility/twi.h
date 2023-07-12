@@ -69,7 +69,7 @@ extern "C" {
 
 /* Redefinition of IRQ for C0/F0/G0/L0 families */
 #if defined(AIRC0xx) || defined(AIR001xx) || defined(AIRG0xx) || defined(AIRL0xx)
-#if defined(I2C1_BASE)
+#if defined(I2C1_BASE) || (defined(AIR001xx) && defined(I2C_BASE))
 #define I2C1_EV_IRQn        I2C1_IRQn
 #define I2C1_EV_IRQHandler  I2C1_IRQHandler
 #endif // defined(I2C1_BASE)

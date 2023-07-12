@@ -55,7 +55,7 @@ extern "C" {
 
 /* Generic definition for series requiring I2C timing calculation */
 #if !defined (AIR32F1xx) && !defined (AIRF2xx) && !defined (AIRF4xx) &&\
-    !defined (AIRL1xx)
+    !defined (AIRL1xx) && !defined(AIR001xx)
 #define I2C_TIMING
 #endif
 
@@ -156,7 +156,7 @@ static const I2C_Charac_t I2C_Charac[] = {
 
 /*  Family specific description for I2C */
 typedef enum {
-#if defined(I2C1_BASE)
+#if defined(I2C1_BASE) || (defined(AIR001xx) && defined(I2C_BASE))
   I2C1_INDEX,
 #endif
 #if defined(I2C2_BASE)
@@ -637,10 +637,10 @@ static uint32_t i2c_getTiming(i2c_t *obj, uint32_t frequency)
   */
 void i2c_init(i2c_t *obj)
 {
-#ifdef AIR001xx
-  i2c_custom_init(obj, 100000, 0xFFFFFFFF, 0x33);
-#else
+#if !defined(AIR001xx)
   i2c_custom_init(obj, 100000, I2C_ADDRESSINGMODE_7BIT, 0x33);
+#else
+  i2c_custom_init(obj, 100000, 0, 0x33);
 #endif
 }
 
@@ -675,13 +675,18 @@ void i2c_custom_init(i2c_t *obj, uint32_t timing, uint32_t addressingMode, uint3
 
       } else {
 
-#if defined I2C1_BASE
+#if defined I2C1_BASE || (defined(AIR001xx) && defined(I2C_BASE))
         // Enable I2C1 clock if not done
         if (obj->i2c == I2C1) {
+#if defined(AIR001xx)
+          __HAL_RCC_I2C_CLK_ENABLE();
+          __HAL_RCC_I2C_FORCE_RESET();
+          __HAL_RCC_I2C_RELEASE_RESET();
+#else
           __HAL_RCC_I2C1_CLK_ENABLE();
           __HAL_RCC_I2C1_FORCE_RESET();
           __HAL_RCC_I2C1_RELEASE_RESET();
-
+#endif
           obj->irq = I2C1_EV_IRQn;
 #if !defined(AIRC0xx) && !defined(AIR001xx) && !defined(AIRG0xx) && !defined(AIRL0xx)
           obj->irqER = I2C1_ER_IRQn;
@@ -755,16 +760,7 @@ void i2c_custom_init(i2c_t *obj, uint32_t timing, uint32_t addressingMode, uint3
 
         handle->Instance             = obj->i2c;
 #ifdef I2C_TIMING
-#ifdef AIR001xx
-        handle->Init.ClockSpeed      = timing;
-        if (timing > 100000) {
-          handle->Init.DutyCycle       = I2C_DUTYCYCLE_16_9;
-        } else {
-          handle->Init.DutyCycle       = I2C_DUTYCYCLE_2;
-        }
-#else
         handle->Init.Timing          = i2c_getTiming(obj, timing);
-#endif
 #else
         handle->Init.ClockSpeed      = i2c_getTiming(obj, timing);
         /* Standard mode (sm) is up to 100kHz, then it's Fast mode (fm)     */
@@ -794,7 +790,6 @@ void i2c_custom_init(i2c_t *obj, uint32_t timing, uint32_t addressingMode, uint3
         HAL_NVIC_SetPriority(obj->irqER, I2C_IRQ_PRIO, I2C_IRQ_SUBPRIO);
         HAL_NVIC_EnableIRQ(obj->irqER);
 #endif /* !AIRC0xx && !AIR001xx && !AIRG0xx && !AIRL0xx */
-
         /* Init the I2C */
         if (HAL_I2C_Init(handle) != HAL_OK) {
           /* Initialization Error */
@@ -835,16 +830,7 @@ void i2c_setTiming(i2c_t *obj, uint32_t frequency)
   __HAL_I2C_DISABLE(&(obj->handle));
 
 #ifdef I2C_TIMING
-#ifdef AIR001xx
-  obj->handle.Init.ClockSpeed = frequency;
-  if (f > 100000) {
-    obj->handle.Init.DutyCycle       = I2C_DUTYCYCLE_16_9;
-  } else {
-    obj->handle.Init.DutyCycle       = I2C_DUTYCYCLE_2;
-  }
-#else
   obj->handle.Init.Timing = f;
-#endif
 #else
   obj->handle.Init.ClockSpeed = f;
   /* Standard mode (sm) is up to 100kHz, then it's Fast mode (fm)     */
