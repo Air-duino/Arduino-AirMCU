@@ -46,7 +46,7 @@ class TwoWire : public Stream {
     typedef std::function<void(int)> cb_function_receive_t;
     typedef std::function<void(void)> cb_function_request_t;
 
-  public:
+  private:
     uint8_t *rxBuffer;
     uint16_t rxBufferAllocated;
     uint16_t rxBufferIndex;
