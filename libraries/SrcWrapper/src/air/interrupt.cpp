@@ -94,7 +94,7 @@ static uint8_t get_pin_id(uint16_t pin)
 
   return id;
 }
-void AIR32_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_t callback, uint32_t mode)
+void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_t callback, uint32_t mode)
 {
   GPIO_InitTypeDef GPIO_InitStruct;
   uint8_t id = get_pin_id(pin);
@@ -169,10 +169,10 @@ void AIR32_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, callback_function_
   * @param  mode : one of the supported interrupt mode defined in AIR32_hal_gpio
   * @retval None
   */
-void AIR32_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, void (*callback)(void), uint32_t mode)
+void air_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, void (*callback)(void), uint32_t mode)
 {
   std::function<void(void)> _c = callback;
-  AIR32_interrupt_enable(port, pin, _c, mode);
+  air_interrupt_enable(port, pin, _c, mode);
 
 }
 
@@ -182,7 +182,7 @@ void AIR32_interrupt_enable(GPIO_TypeDef *port, uint16_t pin, void (*callback)(v
   * @param  pin : one of the gpio pin
   * @retval None
   */
-void AIR32_interrupt_disable(GPIO_TypeDef *port, uint16_t pin)
+void air_interrupt_disable(GPIO_TypeDef *port, uint16_t pin)
 {
   UNUSED(port);
   uint8_t id = get_pin_id(pin);
@@ -238,7 +238,7 @@ void HAL_GPIO_EXTI_Falling_Callback(uint16_t GPIO_Pin)
 }
 #endif
 
-#if defined (AIR32C0xx) || (AIR001xx) || defined (AIR32G0xx) || defined (AIR32L0xx)
+#if defined (AIR32C0xx) || defined(AIR001xx) || defined (AIR32G0xx) || defined (AIR32L0xx)
 #ifdef __cplusplus
 extern "C" {
 #endif
