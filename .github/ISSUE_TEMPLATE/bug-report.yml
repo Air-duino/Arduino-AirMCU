@@ -42,13 +42,7 @@ body:
     attributes:
       label: 日志 / Logs
       description: 日志贴到这里 / Upload your log files.
-      description: |
-        请使用```进行包裹！像下面这样
-
-        ````
-        12321312321312
-        1232131232131231
-        ```
+      description: 请使用```markdown语法进行包裹！
     validations:
       required: false
   - type: input
