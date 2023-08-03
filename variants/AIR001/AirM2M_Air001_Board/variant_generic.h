@@ -72,7 +72,7 @@
 
 // On-board LED pin number
 #ifndef LED_BUILTIN
-  #define LED_BUILTIN           PNUM_NOT_DEFINED
+  #define LED_BUILTIN           PB1
 #endif
 
 // On-board user button
@@ -122,7 +122,7 @@
 
 // UART Definitions
 #ifndef SERIAL_UART_INSTANCE
-  #define SERIAL_UART_INSTANCE  2
+  #define SERIAL_UART_INSTANCE  1
 #endif
 
 // Default pin used for generic 'Serial' instance
