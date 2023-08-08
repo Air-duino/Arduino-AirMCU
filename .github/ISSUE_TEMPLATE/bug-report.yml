@@ -66,7 +66,7 @@ body:
       label: 验证
       description: 提交前请确认已经做过以下操作 / Before submitting the issue, please make sure you do the following
       options:
-        - label: 检查该问题是否已被提过 / Check that there isn't already an issue that reports the same bug to avoid creating a duplicate.
+        - label: 检查过该问题，之前没有人提过 / Check that there isn't already an issue that reports the same bug to avoid creating a duplicate.
           required: true
         - label: 提供了最小可复现工程或详细的复现步骤，确保开发者可以复现 / The provided reproduction is a [minimal reproducible example](https://stackoverflow.com/help/minimal-reproducible-example) of the bug.
           required: true
