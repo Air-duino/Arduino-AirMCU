@@ -890,10 +890,46 @@ float String::toFloat(void) const
   return float(toDouble());
 }
 
-double String::toDouble(void) const
+float String::toDouble(void) const
 {
-  if (buffer) {
-    return atof(buffer);
+  if (buffer)
+  {
+    char *p = buffer;
+    float f = 0.0;
+    int i = -1;
+    // 分割一下字符串
+    if (p[0] != '\0') // 小数点不在开头
+    {
+      i = 0;
+      while (p[i] != '\0')
+      {
+        if (p[i] == '.')
+        {
+          p[i] = '\0';
+          i++;
+          break;
+        }
+        i++;
+      }
+      f += atol(p);
+    }
+    else // 开头是小数点
+    {
+      i = 1;
+    }
+    if (i != -1) // 有小数点
+    {
+      int p_sum = strlen(p + i);
+      float f2 = atol(p + i);
+      while (p_sum--)
+        f2 /= 10.0;
+      f += f2;
+    }
+    else // 没有小数点
+    {
+      f = atol(p);
+    }
+    return f;
   }
   return 0;
 }
