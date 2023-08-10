@@ -11,7 +11,7 @@ compiler.cpp.cmd=arm-none-eabi-g++
 compiler.ar.cmd=arm-none-eabi-ar
 compiler.elf.cmd=arm-none-eabi-g++
 
-compiler.c.elf.cmd=arm-none-eabi-gcc
+compiler.c.elf.cmd=arm-none-eabi-g++
 compiler.objcopy.cmd=arm-none-eabi-objcopy
 compiler.elf2hex.cmd=arm-none-eabi-objcopy
 compiler.libraries.ldflags=
@@ -121,7 +121,7 @@ extras.path={build.system.path}
 # Create {build.opt} if not exists in the output sketch dir and force include of SrcWrapper library
 
 recipe.hooks.prebuild.1.pattern=bash "{extras.path}/extras/prebuild.sh" "{build.path}" "{build.source.path}" "{runtime.platform.path}"
-recipe.hooks.prebuild.1.pattern.windows={extras.path}\extras\prebuild.bat "{build.path}" "{build.source.path}" "{runtime.platform.path}"
+recipe.hooks.prebuild.1.pattern.windows="{extras.path}\extras\prebuild.bat" "{build.path}" "{build.source.path}" "{runtime.platform.path}"
 
 # compile patterns
 # ---------------------

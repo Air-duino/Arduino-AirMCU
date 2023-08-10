@@ -54,6 +54,7 @@
 #define PF1                     33
 #define PF6                     34
 #define PF7                     35
+#define PF4                     36
 
 // Alternate pins number
 #define PA6_ALT1                (PA6  | ALT1)
@@ -77,7 +78,7 @@
 
 // On-board user button
 #ifndef USER_BTN
-  #define USER_BTN              PNUM_NOT_DEFINED
+  #define USER_BTN              PF4
 #endif
 
 // SPI definitions
