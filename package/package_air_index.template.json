@@ -3,10 +3,10 @@
     {
       "name": "Air MCU Arduino Core",
       "maintainer": "AirM2M",
-      "websiteURL": "https://github.com/Air-duino",
+      "websiteURL": "https://arduino.luatos.com",
       "email": "HalfSweet@HalfSweet.cn",
       "help": {
-        "online": "https://github.com/Air-duino"
+        "online": "https://arduino.luatos.com"
       },
       "platforms": [
         {
