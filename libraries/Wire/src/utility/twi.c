@@ -873,6 +873,8 @@ i2c_status_e i2c_master_write(i2c_t *obj, uint8_t dev_address,
     do {
 #if defined(I2C_OTHER_FRAME) && !defined(AIR001xx)
       status = HAL_I2C_Master_Seq_Transmit_IT(&(obj->handle), dev_address, data, size, XferOptions);
+#elif defined(AIR001xx)
+      status = HAL_I2C_Master_Transmit(&(obj->handle), dev_address, data, size, 1000);
 #else
       status = HAL_I2C_Master_Transmit_IT(&(obj->handle), dev_address, data, size);
 #endif
@@ -962,6 +964,8 @@ i2c_status_e i2c_master_read(i2c_t *obj, uint8_t dev_address, uint8_t *data, uin
   do {
 #if defined(I2C_OTHER_FRAME) && !defined(AIR001xx)
     status = HAL_I2C_Master_Seq_Receive_IT(&(obj->handle), dev_address, data, size, XferOptions);
+#elif defined(AIR001xx)
+    status = HAL_I2C_Master_Receive(&(obj->handle), dev_address, data, size, 1000);
 #else
     status = HAL_I2C_Master_Receive_IT(&(obj->handle), dev_address, data, size);
 #endif
