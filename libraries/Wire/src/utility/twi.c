@@ -1181,7 +1181,7 @@ void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
   }
 }
 
-#if defined(I2C1_BASE)
+#if defined(I2C1_BASE) || (defined(AIR001xx) && defined(I2C_BASE))
 /**
 * @brief  This function handles I2C1 interrupt.
 * @param  None
