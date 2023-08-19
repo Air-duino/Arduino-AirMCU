@@ -5,12 +5,12 @@
  Receives from software serial, sends to hardware serial.
 
  The circuit:
- * RX is digital pin 10 (connect to TX of other device)
- * TX is digital pin 11 (connect to RX of other device)
+ * RX is PA0 (connect to TX of other device)
+ * TX is PA1 (connect to RX of other device)
 
  created back in the mists of time
- modified 25 May 2012
- by Tom Igoe
+ modified 19 Aug 2023
+ by HalfSweet
  based on Mikal Hart's example
 
  This example code is in the public domain.
@@ -18,11 +18,11 @@
  */
 #include <SoftwareSerial.h>
 
-SoftwareSerial mySerial(10, 11); // RX, TX
+SoftwareSerial mySerial(PA0, PA1); // RX, TX
 
 void setup() {
   // Open serial communications and wait for port to open:
-  Serial.begin(57600);
+  Serial.begin(115200);
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
   }

@@ -13,13 +13,13 @@
 
  The circuit:
  Two devices which communicate serially are needed.
- * First serial device's TX attached to digital pin 10(RX), RX to pin 11(TX)
- * Second serial device's TX attached to digital pin 8(RX), RX to pin 9(TX)
+ * First serial device's TX attached to PA0(RX), RX to pin PA1(TX)
+ * Second serial device's TX attached to PA4(RX), PA5(TX)
 
 
  created 18 Apr. 2011
- modified 19 March 2016
- by Tom Igoe
+ modified 19 Aug 2023
+ by HalfSweet
  based on Mikal Hart's twoPortRXExample
 
  This example code is in the public domain.
@@ -27,16 +27,15 @@
  */
 
 #include <SoftwareSerial.h>
-// software serial #1: RX = digital pin 10, TX = digital pin 11
-SoftwareSerial portOne(10, 11);
+// software serial #1: RX = PA0, TX = PA1
+SoftwareSerial portOne(PA0, PA1);
 
-// software serial #2: RX = digital pin 8, TX = digital pin 9
-// on the Mega, use other pins instead, since 8 and 9 don't work on the Mega
-SoftwareSerial portTwo(8, 9);
+// software serial #2: RX = PA4, TX = PA5
+SoftwareSerial portTwo(PA4, PA5);
 
 void setup() {
   // Open serial communications and wait for port to open:
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
   }
