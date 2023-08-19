@@ -7,6 +7,7 @@ menu.xserial=U(S)ART support
 menu.usb=USB support (if available)
 menu.xusb=USB speed (if available)
 menu.virtio=Virtual serial support
+menu.BootConnection=Boot Connection
 
 menu.opt=Optimize
 menu.dbg=Debug symbols and core logs
@@ -161,6 +162,11 @@ Air001Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_3V8
 Air001Dev.menu.SupplyVoltage.5V=5V
 Air001Dev.menu.SupplyVoltage.5V.build.sv_tmp=-DVDD_5V
 
+# boot
+Air001Dev.menu.BootConnection.defaule=default isp circuit
+Air001Dev.menu.BootConnection.defaule.upload.boot=default_reset
+Air001Dev.menu.BootConnection.direct=direct connect
+Air001Dev.menu.BootConnection.direct.upload.boot=direct_connect
 
 Air001Dev.build.extra_flags={build.temp} -DF_CPU={build.f_cpu} {build.lsc_temp} {build.sv_tmp} -DAIR001_DEV
 # Upload menu
@@ -209,6 +215,11 @@ Air32F103xx.menu.pnum.AIR32F103CB.build.product_line=AIR32F103xB
 Air32F103xx.menu.pnum.AIR32F103CB.build.board=AIR32F103CB
 Air32F103xx.menu.pnum.AIR32F103CB.build.variant=AIR32F103/F103CB
 
+# boot
+Air32F103xx.menu.BootConnection.defaule=default isp circuit
+Air32F103xx.menu.BootConnection.defaule.upload.boot=default_reset
+Air32F103xx.menu.BootConnection.direct=direct connect
+Air32F103xx.menu.BootConnection.direct.upload.boot=direct_connect
 
 Air32F103xx.build.extra_flags=-DAIR32F1xx
 
@@ -286,5 +297,11 @@ AirM2M_Air001_Board.menu.opt.ogstd=Debug (-Og)
 AirM2M_Air001_Board.menu.opt.ogstd.build.flags.optimize=-Og
 AirM2M_Air001_Board.menu.opt.o0std=No Optimization (-O0)
 AirM2M_Air001_Board.menu.opt.o0std.build.flags.optimize=-O0
+
+# boot
+AirM2M_Air001_Board.menu.BootConnection.defaule=default isp circuit
+AirM2M_Air001_Board.menu.BootConnection.defaule.upload.boot=default_reset
+AirM2M_Air001_Board.menu.BootConnection.direct=direct connect
+AirM2M_Air001_Board.menu.BootConnection.direct.upload.boot=direct_connect
 
 AirM2M_Air001_Board.build.extra_flags=-DAIR001xx_HSE_24M_HCLK_48M -DF_CPU=48000000 -DAIR001xx_LSC_LSI -DVDD_3V3 -DAIR001_DEV
