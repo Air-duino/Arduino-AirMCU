@@ -128,7 +128,7 @@ void TwoWire::setClock(uint32_t frequency)
 
 uint8_t TwoWire::requestFrom(uint8_t address, uint8_t quantity, uint32_t iaddress, uint8_t isize, uint8_t sendStop)
 {
-#if !defined(I2C_OTHER_FRAME)
+#if !defined(I2C_OTHER_FRAME) && !defined(AIR001xx)
   UNUSED(sendStop);
 #endif
   uint8_t read = 0;
@@ -156,7 +156,7 @@ uint8_t TwoWire::requestFrom(uint8_t address, uint8_t quantity, uint32_t iaddres
     }
 
     // perform blocking read into buffer
-#if defined(I2C_OTHER_FRAME)
+#if defined(I2C_OTHER_FRAME) && !defined(AIR001xx)
     if (sendStop == 0) {
       _i2c.handle.XferOptions = I2C_OTHER_FRAME ;
     } else {
@@ -231,12 +231,12 @@ void TwoWire::beginTransmission(int address)
 //
 uint8_t TwoWire::endTransmission(uint8_t sendStop)
 {
-#if !defined(I2C_OTHER_FRAME)
+#if !defined(I2C_OTHER_FRAME) && !defined(AIR001xx)
   UNUSED(sendStop);
 #endif
   int8_t ret = 4;
   // check transfer options and store it in the I2C handle
-#if defined(I2C_OTHER_FRAME)
+#if defined(I2C_OTHER_FRAME) && !defined(AIR001xx)
   if (sendStop == 0) {
     _i2c.handle.XferOptions = I2C_OTHER_FRAME ;
   } else {

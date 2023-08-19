@@ -867,11 +867,11 @@ i2c_status_e i2c_master_write(i2c_t *obj, uint8_t dev_address,
   if (size == 0) {
     ret = i2c_IsDeviceReady(obj, dev_address, 1);
   } else {
-#if defined(I2C_OTHER_FRAME)
+#if defined(I2C_OTHER_FRAME) && !defined(AIR001xx)
     uint32_t XferOptions = obj->handle.XferOptions; // save XferOptions value, because handle can be modified by HAL, which cause issue in case of NACK from slave
 #endif
     do {
-#if defined(I2C_OTHER_FRAME)
+#if defined(I2C_OTHER_FRAME) && !defined(AIR001xx)
       status = HAL_I2C_Master_Seq_Transmit_IT(&(obj->handle), dev_address, data, size, XferOptions);
 #else
       status = HAL_I2C_Master_Transmit_IT(&(obj->handle), dev_address, data, size);
@@ -956,11 +956,11 @@ i2c_status_e i2c_master_read(i2c_t *obj, uint8_t dev_address, uint8_t *data, uin
   uint32_t err = 0;
   HAL_StatusTypeDef status = HAL_OK;
 
-#if defined(I2C_OTHER_FRAME)
+#if defined(I2C_OTHER_FRAME) && !defined(AIR001xx)
   uint32_t XferOptions = obj->handle.XferOptions; // save XferOptions value, because handle can be modified by HAL, which cause issue in case of NACK from slave
 #endif
   do {
-#if defined(I2C_OTHER_FRAME)
+#if defined(I2C_OTHER_FRAME) && !defined(AIR001xx)
     status = HAL_I2C_Master_Seq_Receive_IT(&(obj->handle), dev_address, data, size, XferOptions);
 #else
     status = HAL_I2C_Master_Receive_IT(&(obj->handle), dev_address, data, size);
@@ -1181,7 +1181,7 @@ void HAL_I2C_ErrorCallback(I2C_HandleTypeDef *hi2c)
   }
 }
 
-#if defined(I2C1_BASE) || (defined(AIR001xx) && defined(I2C_BASE))
+#if defined(I2C1_BASE)
 /**
 * @brief  This function handles I2C1 interrupt.
 * @param  None
