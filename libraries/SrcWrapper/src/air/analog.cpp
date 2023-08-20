@@ -622,6 +622,12 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
   }
 #endif
 #ifdef __HAL_RCC_ADC_CLK_ENABLE
+
+#if defined(AIR001xx)
+  __HAL_RCC_ADC_FORCE_RESET();
+  __HAL_RCC_ADC_RELEASE_RESET();
+#endif
+
   __HAL_RCC_ADC_CLK_ENABLE();
 #endif
   /* For AIR32F1xx, AIRH7xx, and AIRMP1xx ADC prescaler is configured in
