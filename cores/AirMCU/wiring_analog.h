@@ -19,6 +19,12 @@
 #ifndef _WIRING_ANALOG_
 #define _WIRING_ANALOG_
 
+#if defined(AIR001xx) || defined(AIR32F1xx)
+/* Analog read resolution */
+#define LL_ADC_RESOLUTION LL_ADC_RESOLUTION_12B
+#define ADC_RANGE 4096
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -55,6 +61,38 @@ extern void analogWrite(uint32_t ulPin, uint32_t ulValue) ;
  * \return Read value from selected pin, if no error.
  */
 extern uint32_t analogRead(uint32_t ulPin) ;
+
+/**
+ * @brief Read the value from the specified analog pin in millivolts.
+ * 
+ * @param ulPin 
+ * @return uint32_t 
+ */
+extern uint32_t analogReadMillivolts(uint32_t ulPin);
+
+/**
+ * @brief Read the value from the specified analog pin in volts.
+ * 
+ * @return int32_t 
+ */
+extern int32_t analogReadVref();
+
+/**
+ * @brief Read the value from the specified analog pin in volts.
+ * 
+ * @param VRef 
+ * @return int32_t 
+ */
+extern int32_t analogReadTempSensor();
+
+/**
+ * @brief Read the value from the specified analog pin in volts.
+ * 
+ * @param VRef 
+ * @param pin 
+ * @return int32_t 
+ */
+extern int32_t analogReadVoltage(int32_t VRef, uint32_t pin);
 
 /*
  * \brief Set the resolution of analogRead return values. Default is 10 bits (range from 0 to 1023).
