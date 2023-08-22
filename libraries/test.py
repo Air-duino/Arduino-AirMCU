@@ -1,6 +1,6 @@
 import os
 
-root = "/home/runner/work/action/Arduino-AirMCU/libraries/"
+root = "/home/runner/work/Arduino-AirMCU/Arduino-AirMCU/libraries/"
 
 for dir in os.listdir(root):
     if not os.path.isdir(dir):

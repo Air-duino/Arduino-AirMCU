@@ -24,7 +24,7 @@ jobs:
         run: |
           rm -rf ~/.arduino15/packages/AirM2M/hardware/AirMCU/0.4.4/
           git submodule update --init --recursive
-          cp -r /home/runner/work/action/Arduino-AirMCU ~/.arduino15/packages/AirM2M/hardware/AirMCU/0.4.4/
+          cp -r /home/runner/work/Arduino-AirMCU/Arduino-AirMCU ~/.arduino15/packages/AirM2M/hardware/AirMCU/0.4.4/
       - name: build
         run: |
           cd libraries
