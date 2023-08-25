@@ -138,10 +138,10 @@
 // Default pin used for generic 'Serial' instance
 // Mandatory for Firmata
 #ifndef PIN_SERIAL_RX
-  #define PIN_SERIAL_RX         PA3
+  #define PIN_SERIAL_RX         PA10
 #endif
 #ifndef PIN_SERIAL_TX
-  #define PIN_SERIAL_TX         PA2
+  #define PIN_SERIAL_TX         PA9
 #endif
 
 /*----------------------------------------------------------------------------
