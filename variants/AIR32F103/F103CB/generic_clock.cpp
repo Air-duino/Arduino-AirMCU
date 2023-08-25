@@ -13,6 +13,12 @@
 #if defined(ARDUINO_AIR32F103CB)
 #include "pins_arduino.h"
 
+constexpr void test(constexpr uint8_t a)
+{
+  constexpr uint8_t b = a;
+  return;
+}
+
 /**
   * @brief  System Clock Configuration
   * @param  None
@@ -57,6 +63,7 @@ WEAK void SystemClock_Config(void)
 }
 #else
 {
+  test(8);
   RCC_OscInitTypeDef RCC_OscInitStruct = {};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {};
 
