@@ -25,6 +25,18 @@
 #define ADC_RANGE 4096
 #endif
 
+#if defined(AIR32F1xx)
+#define VTEMP     1430
+#define AVG_SLOPE 4300
+#define VREFINT   1200
+#endif
+
+#if defined(AIR32C0xx)
+#define CALX_TEMP 30
+#else
+#define CALX_TEMP 25
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif

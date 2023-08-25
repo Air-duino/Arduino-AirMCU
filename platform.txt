@@ -200,3 +200,18 @@ tools.AirISP.bootloader.protocol=serial
 tools.AirISP.bootloader.params.verbose=
 tools.AirISP.bootloader.params.quiet=
 tools.AirISP.bootloader.pattern=
+
+# Debugger configuration (general options)
+# ----------------------------------------
+# EXPERIMENTAL feature:
+# - this is alpha and may be subject to change without notice
+# debug.executable={build.path}/{build.project_name}.elf
+# debug.toolchain=gcc
+# debug.toolchain.path={compiler.path}
+# debug.toolchain.prefix=arm-none-eabi-
+# debug.server=pyocd
+# debug.server.pyocd.path=
+# debug.server.pyocd.scripts_dir=
+# debug.server.pyocd.script=
+# debug.server.pyocd.cmsisPack="D:\\GitHub\\luatos-soc-air001\\PACK\\Keil.AIR001_DFP.1.1.0.pack"
+# debug.server.pyocd.targetId="Air001Dev"

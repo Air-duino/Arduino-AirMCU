@@ -14,7 +14,13 @@ menu.dbg=Debug symbols and core logs
 menu.rtlib=C Runtime Library
 menu.upload_method=Upload method
 
+# Air001 设置方式
 menu.ClockSourceAndFrequency=Clock Source and Frequency
+
+# Air32 设置
+menu.ClockSoure=Clock Source
+menu.SysFreq=System Frequency
+
 menu.LowSpeedClockSource=Low Speed Clock Source
 
 menu.SupplyVoltage=Supply Voltage
@@ -209,6 +215,25 @@ Air32F103xx.menu.UploadSpeed.2400.upload.speed=2400
 Air32F103xx.menu.UploadSpeed.1200=1200
 Air32F103xx.menu.UploadSpeed.1200.upload.speed=1200
 
+Air32F103xx.menu.ClockSoure.HSE8M=HSE (8Mhz)
+Air32F103xx.menu.ClockSoure.HSE8M.build.ClockSoureTemp=-DUSE_HSE
+Air32F103xx.menu.ClockSoure.HSE8M.build.ClockSoure=8000000L
+Air32F103xx.menu.ClockSoure.HSE16M=HSE (16Mhz)
+Air32F103xx.menu.ClockSoure.HSE16M.build.ClockSoureTemp=-DUSE_HSE
+Air32F103xx.menu.ClockSoure.HSE16M.build.ClockSoure=16000000L
+Air32F103xx.menu.ClockSoure.HSI8M=HSI (8Mhz)
+Air32F103xx.menu.ClockSoure.HSI8M.build.ClockSoureTemp=-DUSE_HSI
+Air32F103xx.menu.ClockSoure.HSI8M.build.ClockSoure=8000000L
+
+Air32F103xx.menu.SysFreq.PCLK72M=72Mhz
+Air32F103xx.menu.SysFreq.PCLK72M.build.f_cpu=72000000L
+Air32F103xx.menu.SysFreq.PCLK64M=64Mhz
+Air32F103xx.menu.SysFreq.PCLK64M.build.f_cpu=64000000L
+Air32F103xx.menu.SysFreq.PCLK216M=216Mhz
+Air32F103xx.menu.SysFreq.PCLK216M.build.f_cpu=216000000L
+Air32F103xx.menu.SysFreq.PCLK256M=256Mhz
+Air32F103xx.menu.SysFreq.PCLK256M.build.f_cpu=256000000L
+
 Air32F103xx.menu.pnum.AIR32F103CB=Air32F103CBT6
 Air32F103xx.menu.pnum.AIR32F103CB.upload.maximum_size=131072
 Air32F103xx.menu.pnum.AIR32F103CB.build.product_line=AIR32F103xB
@@ -221,7 +246,7 @@ Air32F103xx.menu.BootConnection.defaule.upload.boot=default_reset
 Air32F103xx.menu.BootConnection.direct=direct connect
 Air32F103xx.menu.BootConnection.direct.upload.boot=direct_connect
 
-Air32F103xx.build.extra_flags=-DAIR32F1xx
+Air32F103xx.build.extra_flags={build.ClockSoureTemp} -DCLOCK_SOURCE={build.ClockSoure} -DF_CPU={build.f_cpu} -DAIR32F1xx
 
 ###############################
 # AirM2M Air001 Board
