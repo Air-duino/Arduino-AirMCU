@@ -147,15 +147,18 @@ void uart_init(serial_t *obj, uint32_t baudrate, uint32_t databits, uint32_t par
     }
     return;
   }
-
-  /*
-   * Get the peripheral name (USART1, USART2, ...) from the pin
-   * and assign it to the object
-   */
-  obj->uart = pinmap_merge_peripheral(uart_tx, uart_rx);
-  /* We also merge RTS/CTS and assert all pins belong to the same instance */
-  obj->uart = pinmap_merge_peripheral(obj->uart, uart_rts);
-  obj->uart = pinmap_merge_peripheral(obj->uart, uart_cts);
+  if(obj->uart == NP)
+  {
+    /*
+     * Get the peripheral name (USART1, USART2, ...) from the pin
+     * and assign it to the object
+     */
+    obj->uart = pinmap_merge_peripheral(uart_tx, uart_rx);
+    /* We also merge RTS/CTS and assert all pins belong to the same instance */
+    obj->uart = pinmap_merge_peripheral(obj->uart, uart_rts);
+    obj->uart = pinmap_merge_peripheral(obj->uart, uart_cts);
+  }
+  
 
   if (obj->uart == NP) {
     if (obj != &serial_debug) {
@@ -316,9 +319,13 @@ void uart_init(serial_t *obj, uint32_t baudrate, uint32_t databits, uint32_t par
 #endif
 
   /* Configure UART GPIO pins */
-  pinmap_pinout(obj->pin_tx, PinMap_UART_TX);
+  // pinmap_pinout(obj->pin_tx, PinMap_UART_TX);
+  // if (uart_rx != NP) {
+  //   pinmap_pinout(obj->pin_rx, PinMap_UART_RX);
+  // }
+  pinmap_pinout_peripheral(obj->pin_tx, PinMap_UART_TX, obj->uart);
   if (uart_rx != NP) {
-    pinmap_pinout(obj->pin_rx, PinMap_UART_RX);
+    pinmap_pinout_peripheral(obj->pin_rx, PinMap_UART_RX, obj->uart);
   }
 
   /* Configure flow control */

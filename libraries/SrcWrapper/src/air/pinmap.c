@@ -2,12 +2,14 @@
 #include "pinconfig.h"
 #include "airyyxx_ll_gpio.h"
 #include "airyyxx_ll_system.h"
+#include <stdarg.h>
 
 #if defined(AIRMP1xx)
-  #include "lock_resource.h"
+#include "lock_resource.h"
 #endif
 
-typedef struct {
+typedef struct
+{
   PinName pin;
   uint32_t LL_AnalogSwitch;
 } PinAnalogSwitch;
@@ -15,12 +17,11 @@ typedef struct {
 #if defined(AIRH7xx)
 #define DUALPAD_ANALOG_SWITCH
 const PinAnalogSwitch PinMapAnalogSwitch[] = {
-  {PA_0,     LL_SYSCFG_ANALOG_SWITCH_PA0},
-  {PA_1,     LL_SYSCFG_ANALOG_SWITCH_PA1},
-  {PC_2,     LL_SYSCFG_ANALOG_SWITCH_PC2},
-  {PC_3,     LL_SYSCFG_ANALOG_SWITCH_PC3},
-  {NC,   0}
-};
+    {PA_0, LL_SYSCFG_ANALOG_SWITCH_PA0},
+    {PA_1, LL_SYSCFG_ANALOG_SWITCH_PA1},
+    {PC_2, LL_SYSCFG_ANALOG_SWITCH_PC2},
+    {PC_3, LL_SYSCFG_ANALOG_SWITCH_PC3},
+    {NC, 0}};
 #else
 /**
  * Even if MP1 support some dual pad (analog switch), we don't consider it
@@ -31,23 +32,22 @@ const PinAnalogSwitch PinMapAnalogSwitch[] = {
 
 /* Map AIR_PIN to LL */
 const uint32_t pin_map_ll[16] = {
-  LL_GPIO_PIN_0,
-  LL_GPIO_PIN_1,
-  LL_GPIO_PIN_2,
-  LL_GPIO_PIN_3,
-  LL_GPIO_PIN_4,
-  LL_GPIO_PIN_5,
-  LL_GPIO_PIN_6,
-  LL_GPIO_PIN_7,
-  LL_GPIO_PIN_8,
-  LL_GPIO_PIN_9,
-  LL_GPIO_PIN_10,
-  LL_GPIO_PIN_11,
-  LL_GPIO_PIN_12,
-  LL_GPIO_PIN_13,
-  LL_GPIO_PIN_14,
-  LL_GPIO_PIN_15
-};
+    LL_GPIO_PIN_0,
+    LL_GPIO_PIN_1,
+    LL_GPIO_PIN_2,
+    LL_GPIO_PIN_3,
+    LL_GPIO_PIN_4,
+    LL_GPIO_PIN_5,
+    LL_GPIO_PIN_6,
+    LL_GPIO_PIN_7,
+    LL_GPIO_PIN_8,
+    LL_GPIO_PIN_9,
+    LL_GPIO_PIN_10,
+    LL_GPIO_PIN_11,
+    LL_GPIO_PIN_12,
+    LL_GPIO_PIN_13,
+    LL_GPIO_PIN_14,
+    LL_GPIO_PIN_15};
 
 #if defined(DUALPAD_ANALOG_SWITCH)
 /**
@@ -56,27 +56,30 @@ const uint32_t pin_map_ll[16] = {
  */
 static void configure_dualpad_switch(PinName pin, int function, uint32_t LL_AnalogSwitch)
 {
-  if (LL_AnalogSwitch == 0) {
-    return ;
+  if (LL_AnalogSwitch == 0)
+  {
+    return;
   }
 
-  if (((function & AIR_MODE_ANALOG) != AIR_MODE_ANALOG)
-      && ((pin & PDUAL) == PDUAL)) {
+  if (((function & AIR_MODE_ANALOG) != AIR_MODE_ANALOG) && ((pin & PDUAL) == PDUAL))
+  {
     /**
-      * We don't configure an analog function but the pin is an analog pad
-      * Pxy_C. In this cases Analog switch should be closed
-      */
+     * We don't configure an analog function but the pin is an analog pad
+     * Pxy_C. In this cases Analog switch should be closed
+     */
     LL_SYSCFG_CloseAnalogSwitch(LL_AnalogSwitch);
-    return ;
-  } else {
+    return;
+  }
+  else
+  {
     /**
-      * Either we configure an analog function,
-      * or it is not an analog function but it is not an analog pad Pxy_C.
-      * In both cases Analog switch should be opened
-      * Note: direct ADC is restricted to Pxy_C,  pin only
-      */
+     * Either we configure an analog function,
+     * or it is not an analog function but it is not an analog pad Pxy_C.
+     * In both cases Analog switch should be opened
+     * Note: direct ADC is restricted to Pxy_C,  pin only
+     */
     LL_SYSCFG_OpenAnalogSwitch(LL_AnalogSwitch);
-    return ;
+    return;
   }
 }
 
@@ -88,25 +91,29 @@ static void configure_dualpad_switch(PinName pin, int function, uint32_t LL_Anal
  */
 static bool is_dualpad_switch_gpio_configurable(PinName pin, int function, uint32_t *pLL_AnalogSwitch)
 {
-  PinAnalogSwitch *AnalogSwitch = (PinAnalogSwitch *) PinMapAnalogSwitch;
+  PinAnalogSwitch *AnalogSwitch = (PinAnalogSwitch *)PinMapAnalogSwitch;
 
   /* Read through PinMapAnalogSwitch array */
-  while (AnalogSwitch->pin != NC) {
+  while (AnalogSwitch->pin != NC)
+  {
     /* Check whether pin is or is associated to dualpad Analog Input */
-    if ((AnalogSwitch->pin | PDUAL)  == (pin | PDUAL)) {
+    if ((AnalogSwitch->pin | PDUAL) == (pin | PDUAL))
+    {
       *pLL_AnalogSwitch = AnalogSwitch->LL_AnalogSwitch;
-      if (((function & AIR_MODE_ANALOG) == AIR_MODE_ANALOG)
-          && ((pin & PDUAL) == PDUAL)) {
+      if (((function & AIR_MODE_ANALOG) == AIR_MODE_ANALOG) && ((pin & PDUAL) == PDUAL))
+      {
         /**
          * We configure an analog function and the pin is an analog pad Pxy_C
          * In this case gpio configuration must be skipped
          */
         return false;
-      } else {
+      }
+      else
+      {
         return true;
       }
     }
-    AnalogSwitch ++;
+    AnalogSwitch++;
   }
   *pLL_AnalogSwitch = 0;
   return true;
@@ -115,9 +122,12 @@ static bool is_dualpad_switch_gpio_configurable(PinName pin, int function, uint3
 
 bool pin_in_pinmap(PinName pin, const PinMap *map)
 {
-  if (pin != (PinName)NC) {
-    while (map->pin != NC) {
-      if (map->pin == pin) {
+  if (pin != (PinName)NC)
+  {
+    while (map->pin != NC)
+    {
+      if (map->pin == pin)
+      {
         return true;
       }
       map++;
@@ -132,58 +142,64 @@ bool pin_in_pinmap(PinName pin, const PinMap *map)
 void pin_function(PinName pin, int function)
 {
   /* Get the pin information */
-  uint32_t mode  = AIR_PIN_FUNCTION(function);
+  uint32_t mode = AIR_PIN_FUNCTION(function);
   uint32_t afnum = AIR_PIN_AFNUM(function);
   uint32_t port = AIR_PORT(pin);
-  uint32_t ll_pin  = AIR_LL_GPIO_PIN(pin);
+  uint32_t ll_pin = AIR_LL_GPIO_PIN(pin);
   uint32_t ll_mode = 0;
 
-  if (pin == (PinName)NC) {
+  if (pin == (PinName)NC)
+  {
     Error_Handler();
   }
 
   /* Handle pin remap if any */
 #if defined(LL_SYSCFG_PIN_RMP_PA11) && defined(LL_SYSCFG_PIN_RMP_PA12) || defined(SYSCFG_CFGR1_PA11_PA12_RMP)
-  switch (pin & PNAME_MASK) {
+  switch (pin & PNAME_MASK)
+  {
 #if defined(SYSCFG_CFGR1_PA11_PA12_RMP)
-    /* Disable PIN pair PA11/12 mapped instead of PA9/10 */
-    case PA_9:
-    case PA_10:
-      LL_SYSCFG_DisablePinRemap();
-      break;
-    /* Enable PIN pair PA11/12 mapped instead of PA9/10 */
-    case PA_11:
-    case PA_12:
-      if ((pin & PREMAP) == PREMAP) {
-        LL_SYSCFG_EnablePinRemap();
-      }
-      break;
+  /* Disable PIN pair PA11/12 mapped instead of PA9/10 */
+  case PA_9:
+  case PA_10:
+    LL_SYSCFG_DisablePinRemap();
+    break;
+  /* Enable PIN pair PA11/12 mapped instead of PA9/10 */
+  case PA_11:
+  case PA_12:
+    if ((pin & PREMAP) == PREMAP)
+    {
+      LL_SYSCFG_EnablePinRemap();
+    }
+    break;
 #else
-    case PA_9:
-      if ((pin & PREMAP) == PREMAP) {
-        LL_SYSCFG_EnablePinRemap(LL_SYSCFG_PIN_RMP_PA11);
-      }
-      break;
-    case PA_10:
-      if ((pin & PREMAP) == PREMAP) {
-        LL_SYSCFG_EnablePinRemap(LL_SYSCFG_PIN_RMP_PA12);
-      }
-      break;
-    case PA_11:
-      LL_SYSCFG_DisablePinRemap(LL_SYSCFG_PIN_RMP_PA11);
-      break;
-    case PA_12:
-      LL_SYSCFG_DisablePinRemap(LL_SYSCFG_PIN_RMP_PA12);
-      break;
+  case PA_9:
+    if ((pin & PREMAP) == PREMAP)
+    {
+      LL_SYSCFG_EnablePinRemap(LL_SYSCFG_PIN_RMP_PA11);
+    }
+    break;
+  case PA_10:
+    if ((pin & PREMAP) == PREMAP)
+    {
+      LL_SYSCFG_EnablePinRemap(LL_SYSCFG_PIN_RMP_PA12);
+    }
+    break;
+  case PA_11:
+    LL_SYSCFG_DisablePinRemap(LL_SYSCFG_PIN_RMP_PA11);
+    break;
+  case PA_12:
+    LL_SYSCFG_DisablePinRemap(LL_SYSCFG_PIN_RMP_PA12);
+    break;
 #endif
-    default:
-      break;
+  default:
+    break;
   }
 #endif
 
 #if defined(DUALPAD_ANALOG_SWITCH)
   uint32_t LL_AnalogSwitch = 0;
-  if (!is_dualpad_switch_gpio_configurable(pin, function, &LL_AnalogSwitch)) {
+  if (!is_dualpad_switch_gpio_configurable(pin, function, &LL_AnalogSwitch))
+  {
     /* Skip gpio configuration */
     configure_dualpad_switch(pin, function, LL_AnalogSwitch);
     return;
@@ -200,58 +216,68 @@ void pin_function(PinName pin, int function)
    *  not so important, register can be set at any time.
    *  But for families like F1, speed only applies to output.
    */
-#if defined (AIR32F1xx)
-  if (mode == AIR_PIN_OUTPUT) {
+#if defined(AIR32F1xx)
+  if (mode == AIR_PIN_OUTPUT)
+  {
 #endif
 #ifdef LL_GPIO_SPEED_FREQ_VERY_HIGH
     LL_GPIO_SetPinSpeed(gpio, ll_pin, LL_GPIO_SPEED_FREQ_VERY_HIGH);
 #else
-    LL_GPIO_SetPinSpeed(gpio, ll_pin, LL_GPIO_SPEED_FREQ_HIGH);
+  LL_GPIO_SetPinSpeed(gpio, ll_pin, LL_GPIO_SPEED_FREQ_HIGH);
 #endif
-#if defined (AIR32F1xx)
+#if defined(AIR32F1xx)
   }
 #endif
 
-  switch (mode) {
-    case AIR_PIN_INPUT:
-      ll_mode = LL_GPIO_MODE_INPUT;
+  switch (mode)
+  {
+  case AIR_PIN_INPUT:
+    ll_mode = LL_GPIO_MODE_INPUT;
 #if defined(AIR32F1xx)
-      // on F1 family, input mode may be associated with an alternate function
-      pin_SetAFPin(gpio, pin, afnum);
+    // on F1 family, input mode may be associated with an alternate function
+    pin_SetAFPin(gpio, pin, afnum);
 #endif
-      break;
-    case AIR_PIN_OUTPUT:
-      ll_mode = LL_GPIO_MODE_OUTPUT;
-      break;
-    case AIR_PIN_ALTERNATE:
-      ll_mode = LL_GPIO_MODE_ALTERNATE;
-      /* In case of ALT function, also set the afnum */
-      if (afnum != AIR_PIN_AFNUM_MASK) {
-        pin_SetAFPin(gpio, pin, afnum);
-      }
-      break;
-    case AIR_PIN_ANALOG:
-      ll_mode = LL_GPIO_MODE_ANALOG;
-      break;
-    default:
-      Error_Handler();
-      break;
+    break;
+  case AIR_PIN_OUTPUT:
+    ll_mode = LL_GPIO_MODE_OUTPUT;
+    break;
+  case AIR_PIN_ALTERNATE:
+    ll_mode = LL_GPIO_MODE_ALTERNATE;
+    /* In case of ALT function, also set the afnum */
+    if (afnum != AIR_PIN_AFNUM_MASK)
+    {
+      pin_SetAFPin(gpio, pin, afnum);
+    }
+    break;
+  case AIR_PIN_ANALOG:
+    ll_mode = LL_GPIO_MODE_ANALOG;
+    break;
+  default:
+    Error_Handler();
+    break;
   }
   LL_GPIO_SetPinMode(gpio, ll_pin, ll_mode);
 
 #if defined(GPIO_ASCR_ASC0)
   /* For families where Analog Control ASC0 register is present */
-  if (AIR_PIN_ANALOG_CONTROL(function)) {
+  if (AIR_PIN_ANALOG_CONTROL(function))
+  {
     LL_GPIO_EnablePinAnalogControl(gpio, ll_pin);
-  } else {
+  }
+  else
+  {
     LL_GPIO_DisablePinAnalogControl(gpio, ll_pin);
   }
 #endif
 
-  if ((mode == AIR_PIN_OUTPUT) || (mode == AIR_PIN_ALTERNATE)) {
-    if (AIR_PIN_OD(function)) {
+  if ((mode == AIR_PIN_OUTPUT) || (mode == AIR_PIN_ALTERNATE))
+  {
+    if (AIR_PIN_OD(function))
+    {
       LL_GPIO_SetPinOutputType(gpio, ll_pin, LL_GPIO_OUTPUT_OPENDRAIN);
-    } else {
+    }
+    else
+    {
       LL_GPIO_SetPinOutputType(gpio, ll_pin, LL_GPIO_OUTPUT_PUSHPULL);
     }
   }
@@ -269,12 +295,15 @@ void pin_function(PinName pin, int function)
 
 void pinmap_pinout(PinName pin, const PinMap *map)
 {
-  if (pin == NC) {
+  if (pin == NC)
+  {
     return;
   }
 
-  while (map->pin != NC) {
-    if (map->pin == pin) {
+  while (map->pin != NC)
+  {
+    if (map->pin == pin)
+    {
       pin_function(pin, map->function);
       return;
     }
@@ -283,10 +312,58 @@ void pinmap_pinout(PinName pin, const PinMap *map)
   Error_Handler();
 }
 
+void  pinmap_pinout_ignore(PinName pin, const PinMap *map, int ignore)
+{
+  int count = 0;
+  if (pin == NC)
+  {
+    return;
+  }
+
+  while (map->pin != NC)
+  {
+    if (map->pin == pin)
+    {
+      if(count >= ignore)
+      {
+        pin_function(pin, map->function);
+        return;
+      }
+      count++;
+    }
+    map++;
+  }
+  Error_Handler();
+}
+
+void  pinmap_pinout_peripheral(PinName pin, const PinMap *map, void *peripheral)
+{
+  if (pin == NC)
+  {
+    return;
+  }
+
+  while (map->pin != NC)
+  {
+    if (map->pin == pin)
+    {
+      if (map->peripheral == peripheral)
+      {
+        pin_function(pin, map->function);
+        return;
+      }
+    }
+    map++;
+  }
+  Error_Handler();
+}
+
 void *pinmap_find_peripheral(PinName pin, const PinMap *map)
 {
-  while (map->pin != NC) {
-    if (map->pin == pin) {
+  while (map->pin != NC)
+  {
+    if (map->pin == pin)
+    {
       return map->peripheral;
     }
     map++;
@@ -298,16 +375,37 @@ void *pinmap_peripheral(PinName pin, const PinMap *map)
 {
   void *peripheral = NP;
 
-  if (pin != (PinName)NC) {
+  if (pin != (PinName)NC)
+  {
     peripheral = pinmap_find_peripheral(pin, map);
   }
   return peripheral;
 }
 
+void *pinmap_peripheral_ignore(PinName pin, const PinMap *map, int ignore)
+{
+  int count = 0;
+  while (map->pin != NC)
+  {
+    if (map->pin == pin)
+    {
+      if(count >= ignore)
+      {
+        return map->peripheral;
+      }
+      count++;
+    }
+    map++;
+  }
+  return NP;
+}
+
 PinName pinmap_find_pin(void *peripheral, const PinMap *map)
 {
-  while (map->peripheral != NP) {
-    if (map->peripheral == peripheral) {
+  while (map->peripheral != NP)
+  {
+    if (map->peripheral == peripheral)
+    {
       return map->pin;
     }
     map++;
@@ -319,7 +417,8 @@ PinName pinmap_pin(void *peripheral, const PinMap *map)
 {
   PinName pin = NC;
 
-  if (peripheral != NP) {
+  if (peripheral != NP)
+  {
     pin = pinmap_find_pin(peripheral, map);
   }
   return pin;
@@ -327,8 +426,10 @@ PinName pinmap_pin(void *peripheral, const PinMap *map)
 
 uint32_t pinmap_find_function(PinName pin, const PinMap *map)
 {
-  while (map->pin != NC) {
-    if (map->pin == pin) {
+  while (map->pin != NC)
+  {
+    if (map->pin == pin)
+    {
       return map->function;
     }
     map++;
@@ -340,7 +441,8 @@ uint32_t pinmap_function(PinName pin, const PinMap *map)
 {
   uint32_t function = (uint32_t)NC;
 
-  if (pin != (PinName)NC) {
+  if (pin != (PinName)NC)
+  {
     function = pinmap_find_function(pin, map);
   }
   return function;
@@ -350,15 +452,18 @@ uint32_t pinmap_function(PinName pin, const PinMap *map)
 void *pinmap_merge_peripheral(void *a, void *b)
 {
   // both are the same (inc both NP)
-  if (a == b) {
+  if (a == b)
+  {
     return a;
   }
 
   // one (or both) is not set
-  if (a == NP) {
+  if (a == NP)
+  {
     return b;
   }
-  if (b == NP) {
+  if (b == NP)
+  {
     return a;
   }
 
