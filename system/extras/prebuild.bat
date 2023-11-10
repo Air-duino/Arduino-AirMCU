@@ -5,7 +5,7 @@ set BOARD_PLATFORM_PATH=%3
 
 if not exist "%BUILD_PATH%\sketch" mkdir "%BUILD_PATH%\sketch"
 if not exist "%BUILD_SOURCE_PATH%\build_opt.h" (
-  echo "\n-fmacro-prefix-map=\"%BOARD_PLATFORM_PATH:\=\\%\"=." > "%BUILD_PATH%\sketch\build.opt"
+  echo "-fmacro-prefix-map=\"%BOARD_PLATFORM_PATH:\=\\%\"=." > "%BUILD_PATH%\sketch\build.opt"
 ) else (
   copy "%BUILD_SOURCE_PATH%\build_opt.h" "%BUILD_PATH%\sketch\build.opt"
   echo. >> "%BUILD_PATH%\sketch\build.opt"
