@@ -4,3 +4,6 @@
 [submodule "system/Air32F103-Drivers"]
 	path = system/Air32F103-Drivers
 	url = https://github.com/Air-duino/Air32F103-Drivers.git
+[submodule "system/Air401-Drivers"]
+	path = system/Air401-Drivers
+	url = https://github.com/Air-duino/Air401-Drivers.git
