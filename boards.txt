@@ -45,7 +45,7 @@ Air001Dev.build.cmsis_lib_gcc=arm_cortexM0l_math
 Air001Dev.build.product_line=AIR001
 Air001Dev.build.variant=AIR001/AIR001_DEV
 Air001Dev.build.air_extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial}
-Air001Dev.build.drivers_include="-I{build.system.path}/Arduino-Air001-Drivers/{build.series}_HAL_Driver/Inc" "-I{build.system.path}/Arduino-Air001-Drivers/{build.series}_HAL_Driver/Src" "-I{build.system.path}/{build.series}" "-I{build.system.path}/Arduino-Air001-Drivers/CMSIS/Device/{build.series}/Include/" "-I{build.system.path}/Arduino-Air001-Drivers/CMSIS/Device/{build.series}/Source/gcc/" 
+Air001Dev.build.drivers_include="-I{build.system.path}/Air001-Drivers/{build.series}_HAL_Driver/Inc" "-I{build.system.path}/Air001-Drivers/{build.series}_HAL_Driver/Src" "-I{build.system.path}/{build.series}" "-I{build.system.path}/Air001-Drivers/CMSIS/Device/{build.series}/Include/" "-I{build.system.path}/Air001-Drivers/CMSIS/Device/{build.series}/Source/gcc/" 
 
 Air001Dev.menu.UploadSpeed.115200=115200
 Air001Dev.menu.UploadSpeed.115200.upload.speed=115200
@@ -196,7 +196,7 @@ Air32F103xx.build.mcu=cortex-m3
 Air32F103xx.build.series=AIR32F103xx
 Air32F103xx.build.cmsis_lib_gcc=arm_cortexM3l_math
 Air32F103xx.build.air_extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial}
-Air32F103xx.build.drivers_include="-I{build.system.path}/Arduino-Air32F103-Drivers/AIR32F1xx_HAL_Driver/Inc" "-I{build.system.path}/Arduino-Air32F103-Drivers/AIR32F1xx_HAL_Driver/Src" "-I{build.system.path}/AIR32F103xx" "-I{build.system.path}/Arduino-Air32F103-Drivers/CMSIS/Device/AIR32F1xx/Include/" "-I{build.system.path}/Arduino-Air32F103-Drivers/CMSIS/Device/AIR32F1xx/Source/gcc/" 
+Air32F103xx.build.drivers_include="-I{build.system.path}/Air32F103-Drivers/AIR32F1xx_HAL_Driver/Inc" "-I{build.system.path}/Air32F103-Drivers/AIR32F1xx_HAL_Driver/Src" "-I{build.system.path}/AIR32F103xx" "-I{build.system.path}/Air32F103-Drivers/CMSIS/Device/AIR32F1xx/Include/" "-I{build.system.path}/Air32F103-Drivers/CMSIS/Device/AIR32F1xx/Source/gcc/" 
 
 Air32F103xx.menu.UploadSpeed.115200=115200
 Air32F103xx.menu.UploadSpeed.115200.upload.speed=115200
@@ -268,7 +268,7 @@ AirM2M_Air001_Board.build.cmsis_lib_gcc=arm_cortexM0l_math
 AirM2M_Air001_Board.build.product_line=AIR001
 AirM2M_Air001_Board.build.variant=AIR001/AirM2M_Air001_Board
 AirM2M_Air001_Board.build.air_extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial}
-AirM2M_Air001_Board.build.drivers_include="-I{build.system.path}/Arduino-Air001-Drivers/{build.series}_HAL_Driver/Inc" "-I{build.system.path}/Arduino-Air001-Drivers/{build.series}_HAL_Driver/Src" "-I{build.system.path}/{build.series}" "-I{build.system.path}/Arduino-Air001-Drivers/CMSIS/Device/{build.series}/Include/" "-I{build.system.path}/Arduino-Air001-Drivers/CMSIS/Device/{build.series}/Source/gcc/" 
+AirM2M_Air001_Board.build.drivers_include="-I{build.system.path}/Air001-Drivers/{build.series}_HAL_Driver/Inc" "-I{build.system.path}/Air001-Drivers/{build.series}_HAL_Driver/Src" "-I{build.system.path}/{build.series}" "-I{build.system.path}/Air001-Drivers/CMSIS/Device/{build.series}/Include/" "-I{build.system.path}/Air001-Drivers/CMSIS/Device/{build.series}/Source/gcc/" 
 
 AirM2M_Air001_Board.menu.UploadSpeed.115200=115200
 AirM2M_Air001_Board.menu.UploadSpeed.115200.upload.speed=115200
