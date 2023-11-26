@@ -1,0 +1,22 @@
+# This file help to add generic board entry.
+# upload.maximum_size and product_line have to be verified
+# and changed if needed.
+
+###############################
+# Air401 Dev
+###############################
+
+Air401Dev.name=Air401 Dev Chip
+
+Air401Dev.build.core=air401
+Air401Dev.build.board=Air401_Dev
+Air401Dev.build.mcu=cortex-m0
+Air401Dev.build.series=Air401
+Air401Dev.build.cmsis_lib_gcc=arm_cortexM0l_math
+Air401Dev.build.air_extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial}
+Air401Dev.upload.maximum_size=65536
+Air401Dev.upload.maximum_data_size=8192
+
+Air401.build.product_line=AIR401
+Air401.build.variant=Air401/air401_dev
+
