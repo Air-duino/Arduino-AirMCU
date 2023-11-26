@@ -26,6 +26,8 @@
   #include "air001xx.h"
 #elif defined(AIR32F103xx)
   #include "air32f1xx.h"
+#elif defined(AIR401xx)
+  #include "air401xx.h"
 #else
   #error "AIRYYxx chip series is not defined in boards.txt."
 #endif
@@ -67,7 +69,7 @@
  * to 0x7F (max value of the AFNUM i.e. AIR_PIN_AFNUM_MASK)
  * See GitHub issue #1798.
  */
-#if defined(AIR001xx) && !defined(GPIO_AF0_TIM3)
+#if (defined(AIR001xx) || defined(AIR401xx)) && !defined(GPIO_AF0_TIM3)
   #define GPIO_AF0_TIM3 AIR_PIN_AFNUM_MASK
 #endif
 

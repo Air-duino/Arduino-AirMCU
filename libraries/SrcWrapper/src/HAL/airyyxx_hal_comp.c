@@ -4,6 +4,8 @@
 
 #ifdef AIR001xx
   #include "air001xx_hal_comp.c"
+#elif AIR401xx
+  #include "air401xx_hal_comp.c"
 #elif AIRF3xx
   #include "airf3xx_hal_comp.c"
 #elif AIRG0xx

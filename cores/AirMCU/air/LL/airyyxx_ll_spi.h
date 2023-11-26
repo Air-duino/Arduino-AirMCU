@@ -10,6 +10,8 @@
 
 #ifdef AIR001xx
   #include "air001xx_ll_spi.h"
+#elif defined(AIR401xx)
+  #include "air401xx_ll_spi.h"  
 #elif defined(AIR32F103xx)
   #include "air32f1xx_ll_spi.h"
 #endif /* AIR001xx */
