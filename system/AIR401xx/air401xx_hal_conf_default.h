@@ -21,8 +21,8 @@
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __AIR401xx_HAL_CONF_H
-#define __AIR401xx_HAL_CONF_H
+#ifndef __AIR401xx_HAL_CONF_DEFAULT_H
+#define __AIR401xx_HAL_CONF_DEFAULT_H
 
 #ifdef __cplusplus
  extern "C" {
@@ -30,7 +30,6 @@
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
-
 #include "airyyxx_hal_conf.h"
 #if 0
 /* ########################## Module Selection ############################## */
@@ -212,6 +211,6 @@
 }
 #endif
 
-#endif /* __AIR401xx_HAL_CONF_H */
+#endif /* __AIR401xx_HAL_CONF_DEFAULT_H */
 
 /************************ (C) COPYRIGHT Puya *****END OF FILE******************/
