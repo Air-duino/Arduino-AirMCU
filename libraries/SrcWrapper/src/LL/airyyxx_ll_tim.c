@@ -6,6 +6,8 @@
   #include "airc0xx_ll_tim.c"
 #elif AIR001xx
   #include "air001xx_ll_tim.c"
+#elif AIR401xx
+  #include "air401xx_ll_tim.c"
 #elif AIR32F1xx
   #include "AIR32F1xx_ll_tim.c"
 #elif AIRF2xx

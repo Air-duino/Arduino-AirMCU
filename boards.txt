@@ -175,7 +175,121 @@ Air001Dev.menu.BootConnection.direct=direct connect
 Air001Dev.menu.BootConnection.direct.upload.boot=direct_connect
 
 Air001Dev.build.extra_flags={build.temp} -DF_CPU={build.f_cpu} {build.lsc_temp} {build.sv_tmp} -DAIR001_DEV
-# Upload menu
+
+###############################
+# Air401 Dev
+###############################
+
+Air401Dev.name=Air401 Dev Chip
+
+Air401Dev.upload.maximum_size=20480
+Air401Dev.upload.maximum_data_size=3072
+
+Air401Dev.upload.tool=AirISP
+Air401Dev.upload.tool.default=AirISP
+
+Air401Dev.build.core=AirMCU
+Air401Dev.build.board=AIR401_DEV
+Air401Dev.build.mcu=cortex-m0plus
+Air401Dev.build.series=AIR401xx
+Air401Dev.build.cmsis_lib_gcc=arm_cortexM0l_math
+Air401Dev.build.product_line=AIR401
+Air401Dev.build.variant=AIR401/AIR401_DEV
+Air401Dev.build.air_extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial}
+Air401Dev.build.drivers_include="-I{build.system.path}/Air401-Drivers/{build.series}_HAL_Driver/Inc" "-I{build.system.path}/Air401-Drivers/{build.series}_HAL_Driver/Src" "-I{build.system.path}/{build.series}" "-I{build.system.path}/Air401-Drivers/CMSIS/Device/{build.series}/Include/" "-I{build.system.path}/Air401-Drivers/CMSIS/Device/{build.series}/Source/gcc/" 
+
+Air401Dev.menu.UploadSpeed.115200=115200
+Air401Dev.menu.UploadSpeed.115200.upload.speed=115200
+Air401Dev.menu.UploadSpeed.57600=57600
+Air401Dev.menu.UploadSpeed.57600.upload.speed=57600
+Air401Dev.menu.UploadSpeed.38400=38400
+Air401Dev.menu.UploadSpeed.38400.upload.speed=38400
+Air401Dev.menu.UploadSpeed.19200=19200
+Air401Dev.menu.UploadSpeed.19200.upload.speed=19200
+Air401Dev.menu.UploadSpeed.9600=9600
+Air401Dev.menu.UploadSpeed.9600.upload.speed=9600
+Air401Dev.menu.UploadSpeed.4800=4800
+Air401Dev.menu.UploadSpeed.4800.upload.speed=4800
+Air401Dev.menu.UploadSpeed.2400=2400
+Air401Dev.menu.UploadSpeed.2400.upload.speed=2400
+Air401Dev.menu.UploadSpeed.1200=1200
+Air401Dev.menu.UploadSpeed.1200.upload.speed=1200
+
+# HSI/HSE选择和主频
+
+Air401Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M=HSI 24Mhz, HCLK 24Mhz
+Air401Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M.build.temp=-D{build.series}_HSI_24M_HCLK_24M
+Air401Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M.build.f_cpu=24000000L
+
+Air401Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M=HSE 24Mhz, HCLK 24Mhz
+Air401Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M.build.temp=-D{build.series}_HSE_24M_HCLK_24M
+Air401Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M.build.f_cpu=24000000L
+
+Air401Dev.menu.LowSpeedClockSource.None=None
+Air401Dev.menu.LowSpeedClockSource.None.build.lsc_temp=-D{build.series}_LSC_NONE
+
+Air401Dev.menu.LowSpeedClockSource.LSI=LSI 32.768Khz
+Air401Dev.menu.LowSpeedClockSource.LSI.build.lsc_temp=-D{build.series}_LSC_LSI
+
+Air401Dev.menu.LowSpeedClockSource.LSE=LSE 32.768Khz
+Air401Dev.menu.LowSpeedClockSource.LSE.build.lsc_temp=-D{build.series}_LSC_LSE
+
+Air401Dev.menu.xserial.generic=Enabled (generic 'Serial')
+Air401Dev.menu.xserial.none=Enabled (no generic 'Serial')
+Air401Dev.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
+Air401Dev.menu.xserial.disabled=Disabled (no Serial support)
+Air401Dev.menu.xserial.disabled.build.xSerial=
+
+# debug
+Air401Dev.menu.dbg.none=None
+Air401Dev.menu.dbg.enable_sym=Symbols Enabled (-g)
+Air401Dev.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
+Air401Dev.menu.dbg.enable_log=Core logs Enabled
+Air401Dev.menu.dbg.enable_log.build.flags.debug=
+Air401Dev.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
+Air401Dev.menu.dbg.enable_all.build.flags.debug=-g
+
+# optimize
+Air401Dev.menu.opt.osstd=Smallest (-Os default)
+Air401Dev.menu.opt.oslto=Smallest (-Os) with LTO
+Air401Dev.menu.opt.oslto.build.flags.optimize=-Os -flto
+Air401Dev.menu.opt.o1std=Fast (-O1)
+Air401Dev.menu.opt.o1std.build.flags.optimize=-O1
+Air401Dev.menu.opt.o1lto=Fast (-O1) with LTO
+Air401Dev.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+Air401Dev.menu.opt.o2std=Faster (-O2)
+Air401Dev.menu.opt.o2std.build.flags.optimize=-O2
+Air401Dev.menu.opt.o2lto=Faster (-O2) with LTO
+Air401Dev.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+Air401Dev.menu.opt.o3std=Fastest (-O3)
+Air401Dev.menu.opt.o3std.build.flags.optimize=-O3
+Air401Dev.menu.opt.o3lto=Fastest (-O3) with LTO
+Air401Dev.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+Air401Dev.menu.opt.ogstd=Debug (-Og)
+Air401Dev.menu.opt.ogstd.build.flags.optimize=-Og
+Air401Dev.menu.opt.o0std=No Optimization (-O0)
+Air401Dev.menu.opt.o0std.build.flags.optimize=-O0
+
+Air401Dev.menu.SupplyVoltage.3V3=3.3V
+Air401Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_3V3
+Air401Dev.menu.SupplyVoltage.1V8=1.8V
+Air401Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_1V8
+Air401Dev.menu.SupplyVoltage.2V5=2.5V
+Air401Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_2V5
+Air401Dev.menu.SupplyVoltage.2V8=2.8V
+Air401Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_2V8
+Air401Dev.menu.SupplyVoltage.3V8=3.8V
+Air401Dev.menu.SupplyVoltage.3V3.build.sv_tmp=-DVDD_3V8
+Air401Dev.menu.SupplyVoltage.5V=5V
+Air401Dev.menu.SupplyVoltage.5V.build.sv_tmp=-DVDD_5V
+
+# boot
+Air401Dev.menu.BootConnection.defaule=default isp circuit
+Air401Dev.menu.BootConnection.defaule.upload.boot=default_reset
+Air401Dev.menu.BootConnection.direct=direct connect
+Air401Dev.menu.BootConnection.direct.upload.boot=direct_connect
+
+Air401Dev.build.extra_flags={build.temp} -DF_CPU={build.f_cpu} {build.lsc_temp} {build.sv_tmp} -DAIR401_DEV
 
 ###############################
 # Air32F103xx

@@ -19,7 +19,7 @@
 #ifndef _WIRING_ANALOG_
 #define _WIRING_ANALOG_
 
-#if defined(AIR001xx) || defined(AIR32F1xx)
+#if defined(AIR001xx) || defined(AIR32F1xx) || defined (AIR401xx)
 /* Analog read resolution */
 #define LL_ADC_RESOLUTION LL_ADC_RESOLUTION_12B
 #define ADC_RANGE 4096

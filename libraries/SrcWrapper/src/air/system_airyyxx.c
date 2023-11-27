@@ -4,6 +4,8 @@
   #include "system_air32c0xx.c"
 #elif AIR001xx
   #include "system_air001xx.c"
+#elif AIR401xx
+  #include "system_air401xx.c"
 #elif AIR32F1xx
   #include "system_air32f1xx.c"
 #elif AIRF2xx

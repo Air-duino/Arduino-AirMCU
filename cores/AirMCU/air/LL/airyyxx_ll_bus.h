@@ -10,6 +10,8 @@
 
 #ifdef AIR001xx
   #include "air001xx_ll_bus.h"
+#elif defined(AIR401xxs)
+  #include "air401xx_ll_bus.h"
 #elif defined(AIR32F103xx)
   #include "air32f1xx_ll_bus.h"
 #endif
