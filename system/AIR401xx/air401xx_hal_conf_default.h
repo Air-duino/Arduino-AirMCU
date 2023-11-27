@@ -100,15 +100,28 @@
 /* ########################### System Configuration ######################### */
 /**
   * @brief This is the HAL system configuration section
-  */     
-#define  VDD_VALUE               ((uint32_t)3300) /*!< Value of VDD in mv */           
-#define  PRIORITY_HIGHEST        0
-#define  PRIORITY_HIGH           1
-#define  PRIORITY_LOW            2
-#define  PRIORITY_LOWEST         3
-#define  TICK_INT_PRIORITY       ((uint32_t)PRIORITY_LOWEST)    /*!< tick interrupt priority (lowest by default)  */            
-#define  USE_RTOS                0
-#define  PREFETCH_ENABLE         0
+  */
+#if !defined(VDD_VALUE)
+#define  VDD_VALUE                    3300U  /*!< Value of VDD in mv */
+#endif
+#if !defined (TICK_INT_PRIORITY)
+#define  TICK_INT_PRIORITY            0x00U /*!< tick interrupt priority */
+#endif
+#if !defined (USE_RTOS)
+#define  USE_RTOS                     0U
+#endif
+#if !defined (PREFETCH_ENABLE)
+#define  PREFETCH_ENABLE              1U
+#endif
+#if !defined (INSTRUCTION_CACHE_ENABLE)
+#define  INSTRUCTION_CACHE_ENABLE     0U
+#endif
+#if !defined (DATA_CACHE_ENABLE)
+#define  DATA_CACHE_ENABLE            0U
+#endif
+#if !defined (USE_SPI_CRC)
+#define  USE_SPI_CRC                  0U
+#endif
 
 /* ########################## Assert Selection ############################## */
 /**
