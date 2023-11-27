@@ -61,6 +61,7 @@ void HardwareTimer::setup(TIM_TypeDef *instance)
 
   _timerObj.handle.Instance = instance;
   _timerObj.handle.Channel = HAL_TIM_ACTIVE_CHANNEL_CLEARED;
+#if (defined(DMA) || defined(DMA1))
   _timerObj.handle.hdma[0] = NULL;
   _timerObj.handle.hdma[1] = NULL;
   _timerObj.handle.hdma[2] = NULL;
@@ -68,6 +69,7 @@ void HardwareTimer::setup(TIM_TypeDef *instance)
   _timerObj.handle.hdma[4] = NULL;
   _timerObj.handle.hdma[5] = NULL;
   _timerObj.handle.hdma[6] = NULL;
+#endif
   _timerObj.handle.Lock = HAL_UNLOCKED;
   _timerObj.handle.State = HAL_TIM_STATE_RESET;
 
@@ -1358,7 +1360,7 @@ uint32_t HardwareTimer::getTimerClkFreq()
       uwAPBxPrescaler = clkconfig.APB1CLKDivider;
       uwTimclock = HAL_RCC_GetPCLK1Freq();
       break;
-#if !defined(AIRC0xx) && !defined(AIR001xx) && !defined(AIRG0xx)
+#if !defined(AIRC0xx) && !defined(AIR001xx) && !defined(AIRG0xx) && !defined(AIR401xx)
     case 2:
       uwAPBxPrescaler = clkconfig.APB2CLKDivider;
       uwTimclock = HAL_RCC_GetPCLK2Freq();

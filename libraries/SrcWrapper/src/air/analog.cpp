@@ -147,12 +147,16 @@ uint32_t get_adc_channel(PinName pin, uint32_t *bank)
       channel = ADC_CHANNEL_10;
       break;
 #endif
+#ifdef ADC_CHANNEL_11
     case 11:
       channel = ADC_CHANNEL_11;
       break;
+#endif
+#ifdef ADC_CHANNEL_12
     case 12:
       channel = ADC_CHANNEL_12;
       break;
+#endif
 #ifdef ADC_CHANNEL_13
     case 13:
       channel = ADC_CHANNEL_13;
@@ -623,7 +627,7 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *hadc)
 #endif
 #ifdef __HAL_RCC_ADC_CLK_ENABLE
 
-#if defined(AIR001xx)
+#if defined(AIR001xx) || defined(AIR401xx)
   __HAL_RCC_ADC_FORCE_RESET();
   __HAL_RCC_ADC_RELEASE_RESET();
 #endif
@@ -875,6 +879,7 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
 #if !defined(AIR32F1xx) && !defined(AIRF2xx) && !defined(AIRF3xx) && \
     !defined(AIRF4xx) && !defined(AIRF7xx) && !defined(AIRG4xx) && \
     !defined(AIRH7xx) && !defined(AIRL4xx) && !defined(AIRL5xx) && \
+    !defined (AIR401xx) && \
     !defined(AIRMP1xx) && !defined(AIRWBxx) ||  defined(ADC_SUPPORT_2_5_MSPS)
   AdcHandle.Init.LowPowerAutoPowerOff  = DISABLE;                       /* ADC automatically powers-off after a conversion and automatically wakes-up when a new conversion is triggered */
 #endif
@@ -884,12 +889,13 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
   AdcHandle.Init.ChannelsBank          = ADC_CHANNELS_BANK_A;
 #endif
   AdcHandle.Init.ContinuousConvMode    = DISABLE;                       /* Continuous mode disabled to have only 1 conversion at each conversion trig */
-#if !defined(AIR001xx) && !defined(AIRL0xx)
+#if !defined(AIR001xx) && !defined(AIRL0xx) && !defined(AIR401xx)
   AdcHandle.Init.NbrOfConversion       = 1;                             /* Specifies the number of ranks that will be converted within the regular group sequencer. */
 #endif
   AdcHandle.Init.DiscontinuousConvMode = DISABLE;                       /* Parameter discarded because sequencer is disabled */
 #if !defined(AIRC0xx) && !defined(AIR001xx) && !defined(AIRG0xx) && \
-    !defined(AIRL0xx) && !defined(AIRWLxx) && !defined(ADC_SUPPORT_2_5_MSPS)
+    !defined(AIRL0xx) && !defined(AIRWLxx) && !defined(ADC_SUPPORT_2_5_MSPS) && \
+    !defined (AIR401xx)
   AdcHandle.Init.NbrOfDiscConversion   = 0;                             /* Parameter discarded because sequencer is disabled */
 #endif
   AdcHandle.Init.ExternalTrigConv      = ADC_SOFTWARE_START;            /* Software start to trig the 1st conversion manually, without external event */
@@ -897,6 +903,7 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
   AdcHandle.Init.ExternalTrigConvEdge  = ADC_EXTERNALTRIGCONVEDGE_NONE; /* Parameter discarded because software trigger chosen */
 #endif
 #if !defined(AIR32F1xx) && !defined(AIRH7xx) && !defined(AIRMP1xx) && \
+    !defined (AIR401xx) && \
     !defined(ADC1_V2_5)
   AdcHandle.Init.DMAContinuousRequests = DISABLE;                       /* DMA one-shot mode selected (not applied to this example) */
 #endif
@@ -910,7 +917,7 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
   AdcHandle.Init.LeftBitShift          = ADC_LEFTBITSHIFT_NONE;         /* No bit shift left applied on the final ADC conversion data */
 #endif
 
-#if defined(AIR001xx)
+#if defined(AIR001xx) || defined (AIR401xx)
   AdcHandle.Init.SamplingTimeCommon    = samplingTime;
 #endif
 #if defined(AIRC0xx) || defined(AIRG0xx) || defined(AIRU5xx) || \
@@ -924,7 +931,8 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
 #endif
 #if !defined(AIR001xx) && !defined(AIR32F1xx) && !defined(AIRF2xx) && \
     !defined(AIRF3xx) && !defined(AIRF4xx) && !defined(AIRF7xx) && \
-    !defined(AIRL1xx) && !defined(ADC_SUPPORT_2_5_MSPS)
+    !defined(AIRL1xx) && !defined(ADC_SUPPORT_2_5_MSPS) && \
+    !defined (AIR401xx)
   AdcHandle.Init.OversamplingMode      = DISABLE;
   /* AdcHandle.Init.Oversample ignore for AIRL0xx as oversampling disabled */
   /* AdcHandle.Init.Oversampling ignored for other as oversampling disabled */
@@ -940,7 +948,9 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
 #endif
 
   AdcHandle.State = HAL_ADC_STATE_RESET;
+#if !defined (AIR401xx)
   AdcHandle.DMA_Handle = NULL;
+#endif
   AdcHandle.Lock = HAL_UNLOCKED;
   /* Some other ADC_HandleTypeDef fields exists but not required */
 
@@ -979,6 +989,7 @@ uint16_t adc_read_value(PinName pin, uint32_t resolution)
 #if !defined(AIRC0xx) && !defined(AIR001xx) && !defined(AIR32F1xx) && \
     !defined(AIRF2xx) && !defined(AIRG0xx) && !defined(AIRL0xx) && \
     !defined(AIRL1xx) && !defined(AIRWBxx) && !defined(AIRWLxx) && \
+    !defined (AIR401xx) && \
     !defined(ADC1_V2_5)
   AdcChannelConf.Offset = 0;                                      /* Parameter discarded because offset correction is disabled */
 #endif

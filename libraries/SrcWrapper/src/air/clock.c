@@ -124,12 +124,14 @@ void enableClock(sourceClock_t source)
         RCC_OscInitStruct.LSEState = RCC_LSE_ON;
       }
       break;
+#ifndef AIR401xx // AIR401xx does not have HSE
     case HSE_CLOCK:
       if (__HAL_RCC_GET_FLAG(RCC_FLAG_HSERDY) == RESET) {
         RCC_OscInitStruct.OscillatorType =  RCC_OSCILLATORTYPE_HSE;
         RCC_OscInitStruct.HSEState = RCC_HSE_ON;
       }
       break;
+#endif
     default:
       /* No valid clock to enable */
       break;

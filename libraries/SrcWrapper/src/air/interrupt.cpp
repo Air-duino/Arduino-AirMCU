@@ -12,11 +12,15 @@ typedef struct {
 } gpio_irq_conf_str;
 
 /* Private_Defines */
+#if !defined(AIR401xx)
 #define NB_EXTI   (16)
+#else
+#define NB_EXTI   (8)
+#endif
 
 /* Private Variables */
 static gpio_irq_conf_str gpio_irq_conf[NB_EXTI] = {
-#if defined (AIR32C0xx) || defined (AIR001xx) || defined (AIR32G0xx) || defined (AIR32L0xx)
+#if defined (AIR32C0xx) || defined (AIR001xx) || defined (AIR32G0xx) || defined (AIR32L0xx) || defined (AIR401xx)
   {.irqnb = EXTI0_1_IRQn,   .callback = NULL}, //GPIO_PIN_0
   {.irqnb = EXTI0_1_IRQn,   .callback = NULL}, //GPIO_PIN_1
   {.irqnb = EXTI2_3_IRQn,   .callback = NULL}, //GPIO_PIN_2
@@ -25,6 +29,7 @@ static gpio_irq_conf_str gpio_irq_conf[NB_EXTI] = {
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}, //GPIO_PIN_5
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}, //GPIO_PIN_6
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}, //GPIO_PIN_7
+#if !defined (AIR401xx)
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}, //GPIO_PIN_8
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}, //GPIO_PIN_9
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}, //GPIO_PIN_10
@@ -33,6 +38,8 @@ static gpio_irq_conf_str gpio_irq_conf[NB_EXTI] = {
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}, //GPIO_PIN_13
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}, //GPIO_PIN_14
   {.irqnb = EXTI4_15_IRQn,  .callback = NULL}  //GPIO_PIN_15
+#endif
+
 #elif defined (AIR32MP1xx) || defined (AIR32L5xx) || defined (AIR32U5xx)
   {.irqnb = EXTI0_IRQn,     .callback = NULL}, //GPIO_PIN_0
   {.irqnb = EXTI1_IRQn,     .callback = NULL}, //GPIO_PIN_1
@@ -74,8 +81,10 @@ static gpio_irq_conf_str gpio_irq_conf[NB_EXTI] = {
 static const uint32_t ll_exti_lines[NB_EXTI] = {
   LL_EXTI_LINE_0,  LL_EXTI_LINE_1,  LL_EXTI_LINE_2,  LL_EXTI_LINE_3,
   LL_EXTI_LINE_4,  LL_EXTI_LINE_5,  LL_EXTI_LINE_6,  LL_EXTI_LINE_7,
+#if !defined (AIR401xx)
   LL_EXTI_LINE_8,  LL_EXTI_LINE_9,  LL_EXTI_LINE_10, LL_EXTI_LINE_11,
   LL_EXTI_LINE_12, LL_EXTI_LINE_13, LL_EXTI_LINE_14, LL_EXTI_LINE_15
+#endif
 };
 /* Private Functions */
 /**
@@ -194,7 +203,7 @@ void air_interrupt_disable(GPIO_TypeDef *port, uint16_t pin)
       return;
     }
   }
-#ifndef AIR001xx
+#if !defined(AIR001xx) && !defined(AIR401xx)
   LL_EXTI_DisableIT_0_31(ll_exti_lines[id]);
 #else
   LL_EXTI_DisableIT(ll_exti_lines[id]);

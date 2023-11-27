@@ -37,7 +37,7 @@ extern "C" {
 #endif
 
 #if defined(TIM1_BASE) && !defined(TIM1_IRQn)
-#if defined(AIRC0xx) || defined(AIR001xx) || defined(AIRG0xx)
+#if defined(AIRC0xx) || defined(AIR001xx) || defined(AIRG0xx) || defined(AIR401xx)
 #define TIM1_IRQn TIM1_BRK_UP_TRG_COM_IRQn
 #define TIM1_IRQHandler TIM1_BRK_UP_TRG_COM_IRQHandler
 #elif defined(AIR32F1xx) ||defined(AIRG4xx)
