@@ -1,5 +1,5 @@
 name=Air MCU
-version=0.5.1
+version=0.6.0
 
 ## compiler variables 编译器的路径
 compiler.path={runtime.tools.xpack-arm-none-eabi-gcc.path}/bin/
