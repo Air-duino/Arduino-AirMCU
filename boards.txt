@@ -182,8 +182,8 @@ Air001Dev.build.extra_flags={build.temp} -DF_CPU={build.f_cpu} {build.lsc_temp} 
 
 Air401Dev.name=Air401 Dev Chip
 
-Air401Dev.upload.maximum_size=32768
-Air401Dev.upload.maximum_data_size=4096
+Air401Dev.upload.maximum_size=20480
+Air401Dev.upload.maximum_data_size=3072
 
 Air401Dev.upload.tool=AirISP
 Air401Dev.upload.tool.default=AirISP

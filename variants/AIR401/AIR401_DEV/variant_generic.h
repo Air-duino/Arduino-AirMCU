@@ -116,7 +116,7 @@
 // Timer Definitions
 // Use TIM6/TIM7 when possible as servo and tone don't need GPIO output pin
 #ifndef TIMER_TONE
-  #define TIMER_TONE            TIM16
+  #define TIMER_TONE            TIM14
 #endif
 #ifndef TIMER_SERVO
   #define TIMER_SERVO           TIM14
