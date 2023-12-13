@@ -16,7 +16,7 @@ jobs:
         wget https://raw.githubusercontent.com/chenxuuu/action/main/scripts/issue_check.py
     - name: check issue
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ISSUE_CHECK_TOKEN }}
         ISSUE_URL: ${{ github.event.issue.html_url }}
       run: |
         cd ..
