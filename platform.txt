@@ -167,7 +167,7 @@ recipe.size.regex.eeprom=^(?:\.eeprom)\s+([0-9]+).*
 ##
 ## AirISP
 ##
-tools.AirISP.path={runtime.tools.AirISP-next.path}
+tools.AirISP.path={runtime.tools.AirISP.path}
 tools.AirISP.cmd=AirISP-next
 tools.AirISP.cmd.windows=AirISP-next.exe
 
