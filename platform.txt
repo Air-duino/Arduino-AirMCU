@@ -1,5 +1,5 @@
 name=Air MCU
-version=0.6.1
+version=0.6.3
 
 ## compiler variables 编译器的路径
 compiler.path={runtime.tools.xpack-arm-none-eabi-gcc.path}/bin/
@@ -167,9 +167,9 @@ recipe.size.regex.eeprom=^(?:\.eeprom)\s+([0-9]+).*
 ##
 ## AirISP
 ##
-tools.AirISP.path={runtime.tools.AirISP.path}
-tools.AirISP.cmd=AirISP
-tools.AirISP.cmd.windows=AirISP.exe
+tools.AirISP.path={runtime.tools.AirISP-next.path}
+tools.AirISP.cmd=AirISP-next
+tools.AirISP.cmd.windows=AirISP-next.exe
 
 ## Upload Sketch
 ## -------------
