@@ -66,48 +66,48 @@ Air001Dev.menu.UploadSpeed.1200.upload.speed=1200
 
 # HSI/HSE选择和主频
 Air001Dev.menu.ClockSourceAndFrequency.HSI4M_HCLK4M=HSI 4Mhz, HCLK 4Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSI4M_HCLK4M.build.temp=-D{build.series}_HSI_4M_HCLK_4M
+Air001Dev.menu.ClockSourceAndFrequency.HSI4M_HCLK4M.build.temp=-D{build.series}_HSI_4M_HCLK_4M -DHSI_VALUE=4000000
 Air001Dev.menu.ClockSourceAndFrequency.HSI4M_HCLK4M.build.f_cpu=4000000L
 
 Air001Dev.menu.ClockSourceAndFrequency.HSI8M_HCLK8M=HSI 8Mhz, HCLK 8Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSI8M_HCLK8M.build.temp=-D{build.series}_HSI_8M_HCLK_8M
+Air001Dev.menu.ClockSourceAndFrequency.HSI8M_HCLK8M.build.temp=-D{build.series}_HSI_8M_HCLK_8M -DHSI_VALUE=8000000
 Air001Dev.menu.ClockSourceAndFrequency.HSI8M_HCLK8M.build.f_cpu=8000000L
 
 Air001Dev.menu.ClockSourceAndFrequency.HSI16M_HCLK16M=HSI 16Mhz, HCLK 16Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSI16M_HCLK16M.build.temp=-D{build.series}_HSI_16M_HCLK_16M
+Air001Dev.menu.ClockSourceAndFrequency.HSI16M_HCLK16M.build.temp=-D{build.series}_HSI_16M_HCLK_16M -DHSI_VALUE=16000000
 Air001Dev.menu.ClockSourceAndFrequency.HSI16M_HCLK16M.build.f_cpu=16000000L
 
 Air001Dev.menu.ClockSourceAndFrequency.HSI22_12M_HCLK22_12M=HSI 22.12Mhz, HCLK 22.12Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSI22_12M_HCLK22_12M.build.temp=-D{build.series}_HSI_22_12M_HCLK_22_12M
+Air001Dev.menu.ClockSourceAndFrequency.HSI22_12M_HCLK22_12M.build.temp=-D{build.series}_HSI_22_12M_HCLK_22_12M -DHSI_VALUE=22120000
 Air001Dev.menu.ClockSourceAndFrequency.HSI22_12M_HCLK22_12M.build.f_cpu=22120000L
 
 
 Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M=HSI 24Mhz, HCLK 24Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M.build.temp=-D{build.series}_HSI_24M_HCLK_24M
+Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M.build.temp=-D{build.series}_HSI_24M_HCLK_24M -DHSI_VALUE=24000000
 Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M.build.f_cpu=24000000L
 
 Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK48M=HSI 24Mhz, HCLK 48Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK48M.build.temp=-D{build.series}_HSI_24M_HCLK_48M
+Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK48M.build.temp=-D{build.series}_HSI_24M_HCLK_48M -DHSI_VALUE=24000000
 Air001Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK48M.build.f_cpu=48000000L
 
 Air001Dev.menu.ClockSourceAndFrequency.HSE8M_HCLK8M=HSE 8Mhz, HCLK 8Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSE8M_HCLK8M.build.temp=-D{build.series}_HSE_8M_HCLK_8M
+Air001Dev.menu.ClockSourceAndFrequency.HSE8M_HCLK8M.build.temp=-D{build.series}_HSE_8M_HCLK_8M -DHSE_VALUE=8000000
 Air001Dev.menu.ClockSourceAndFrequency.HSE8M_HCLK8M.build.f_cpu=8000000L
 
 Air001Dev.menu.ClockSourceAndFrequency.HSE16M_HCLK16M=HSE 16Mhz, HCLK 16Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSE16M_HCLK16M.build.temp=-D{build.series}_HSE_16M_HCLK_16M
+Air001Dev.menu.ClockSourceAndFrequency.HSE16M_HCLK16M.build.temp=-D{build.series}_HSE_16M_HCLK_16M -DHSE_VALUE=16000000
 Air001Dev.menu.ClockSourceAndFrequency.HSE16M_HCLK16M.build.f_cpu=16000000L
 
 Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M=HSE 24Mhz, HCLK 24Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M.build.temp=-D{build.series}_HSE_24M_HCLK_24M
+Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M.build.temp=-D{build.series}_HSE_24M_HCLK_24M -DHSE_VALUE=24000000
 Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M.build.f_cpu=24000000L
 
 Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK48M=HSE 24Mhz, HCLK 48Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK48M.build.temp=-D{build.series}_HSE_24M_HCLK_48M
+Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK48M.build.temp=-D{build.series}_HSE_24M_HCLK_48M -DHSE_VALUE=24000000
 Air001Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK48M.build.f_cpu=48000000L
 
 Air001Dev.menu.ClockSourceAndFrequency.HSE32M_HCLK32M=HSE 32Mhz, HCLK 32Mhz
-Air001Dev.menu.ClockSourceAndFrequency.HSE32M_HCLK32M.build.temp=-D{build.series}_HSE_32M_HCLK_32M
+Air001Dev.menu.ClockSourceAndFrequency.HSE32M_HCLK32M.build.temp=-D{build.series}_HSE_32M_HCLK_32M -DHSE_VALUE=32000000
 Air001Dev.menu.ClockSourceAndFrequency.HSE32M_HCLK32M.build.f_cpu=32000000L
 
 Air001Dev.menu.LowSpeedClockSource.None=None
@@ -218,11 +218,11 @@ Air401Dev.menu.UploadSpeed.1200.upload.speed=1200
 # HSI/HSE选择和主频
 
 Air401Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M=HSI 24Mhz, HCLK 24Mhz
-Air401Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M.build.temp=-D{build.series}_HSI_24M_HCLK_24M
+Air401Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M.build.temp=-D{build.series}_HSI_24M_HCLK_24M -DHSI_VALUE=24000000
 Air401Dev.menu.ClockSourceAndFrequency.HSI24M_HCLK24M.build.f_cpu=24000000L
 
 Air401Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M=HSE 24Mhz, HCLK 24Mhz
-Air401Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M.build.temp=-D{build.series}_HSE_24M_HCLK_24M
+Air401Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M.build.temp=-D{build.series}_HSE_24M_HCLK_24M -DHSE_VALUE=24000000
 Air401Dev.menu.ClockSourceAndFrequency.HSE24M_HCLK24M.build.f_cpu=24000000L
 
 Air401Dev.menu.LowSpeedClockSource.None=None
@@ -330,10 +330,10 @@ Air32F103xx.menu.UploadSpeed.1200=1200
 Air32F103xx.menu.UploadSpeed.1200.upload.speed=1200
 
 Air32F103xx.menu.ClockSoure.HSE8M=HSE (8Mhz)
-Air32F103xx.menu.ClockSoure.HSE8M.build.ClockSoureTemp=-DUSE_HSE
+Air32F103xx.menu.ClockSoure.HSE8M.build.ClockSoureTemp=-DUSE_HSE -DHSE_VALUE=8000000
 Air32F103xx.menu.ClockSoure.HSE8M.build.ClockSoure=8000000L
 Air32F103xx.menu.ClockSoure.HSE16M=HSE (16Mhz)
-Air32F103xx.menu.ClockSoure.HSE16M.build.ClockSoureTemp=-DUSE_HSE
+Air32F103xx.menu.ClockSoure.HSE16M.build.ClockSoureTemp=-DUSE_HSE -DHSE_VALUE=16000000
 Air32F103xx.menu.ClockSoure.HSE16M.build.ClockSoure=16000000L
 Air32F103xx.menu.ClockSoure.HSI8M=HSI (8Mhz)
 Air32F103xx.menu.ClockSoure.HSI8M.build.ClockSoureTemp=-DUSE_HSI

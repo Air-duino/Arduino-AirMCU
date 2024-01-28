@@ -38,10 +38,6 @@ WEAK void SystemClock_Config(void)
 #endif
 
 #if defined(AIR001xx_HSI_4M_HCLK_4M)
-#ifdef HSI_VALUE
-#undef HSI_VALUE
-#endif
-#define HSI_VALUE 4000000U
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSI;
     RCC_OscInitStruct.HSIState = RCC_HSI_ON;                         /* 开启HSI */
@@ -67,10 +63,6 @@ WEAK void SystemClock_Config(void)
         Error_Handler();
     }
 #elif defined(AIR001xx_HSI_8M_HCLK_8M)
-#ifdef HSI_VALUE
-#undef HSI_VALUE
-#endif
-#define HSI_VALUE 8000000U
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSI;
     RCC_OscInitStruct.HSIState = RCC_HSI_ON;                         /* 开启HSI */
@@ -97,10 +89,6 @@ WEAK void SystemClock_Config(void)
     }
 
 #elif defined(AIR001xx_HSI_16M_HCLK_16M)
-#ifdef HSI_VALUE
-#undef HSI_VALUE
-#endif
-#define HSI_VALUE 16000000U
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSI;
     RCC_OscInitStruct.HSIState = RCC_HSI_ON;                          /* 开启HSI */
@@ -127,10 +115,6 @@ WEAK void SystemClock_Config(void)
     }
 
 #elif defined(AIR001xx_HSI_22_12M_HCLK_22_12M)
-#ifdef HSI_VALUE
-#undef HSI_VALUE
-#endif
-#define HSI_VALUE 22120000U
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSI;
     RCC_OscInitStruct.HSIState = RCC_HSI_ON;                             /* 开启HSI */
@@ -157,10 +141,6 @@ WEAK void SystemClock_Config(void)
     }
 
 #elif defined(AIR001xx_HSI_24M_HCLK_24M)
-#ifdef HSI_VALUE
-#undef HSI_VALUE
-#endif
-#define HSI_VALUE 24000000U
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSI;
     RCC_OscInitStruct.HSIState = RCC_HSI_ON;                          /* 开启HSI */
@@ -187,10 +167,6 @@ WEAK void SystemClock_Config(void)
     }
 
 #elif defined(AIR001xx_HSI_24M_HCLK_48M)
-#ifdef HSI_VALUE
-#undef HSI_VALUE
-#endif
-#define HSI_VALUE 24000000U
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSI;
     RCC_OscInitStruct.HSIState = RCC_HSI_ON;                          /* 开启HSI */
@@ -217,10 +193,6 @@ WEAK void SystemClock_Config(void)
     }
 
 #elif defined(AIR001xx_HSE_8M_HCLK_8M)
-#ifdef HSE_VALUE
-#undef HSE_VALUE
-#endif
-#define HSE_VALUE 8000000U
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSE; /* 选择RCC振荡器为HSE */
     RCC_OscInitStruct.HSIState = RCC_HSI_OFF;                   /* 开启HSI */
@@ -248,10 +220,6 @@ WEAK void SystemClock_Config(void)
     }
 
 #elif defined(AIR001xx_HSE_16M_HCLK_16M)
-#ifdef HSE_VALUE
-#undef HSE_VALUE
-#endif
-#define HSE_VALUE 16000000U
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSE; /* 选择RCC振荡器为HSE */
     RCC_OscInitStruct.HSIState = RCC_HSI_OFF;                   /* 开启HSI */
@@ -279,10 +247,6 @@ WEAK void SystemClock_Config(void)
     }
 
 #elif defined(AIR001xx_HSE_24M_HCLK_24M)
-#ifdef HSE_VALUE
-#undef HSE_VALUE
-#endif
-#define HSE_VALUE 24000000U
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSE; /* 选择RCC振荡器为HSE */
     RCC_OscInitStruct.HSIState = RCC_HSI_OFF;
@@ -310,10 +274,6 @@ WEAK void SystemClock_Config(void)
     }
 
 #elif defined(AIR001xx_HSE_32M_HCLK_32M)
-#ifdef HSE_VALUE
-#undef HSE_VALUE
-#endif
-#define HSE_VALUE 32000000U
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSE; /* 选择RCC振荡器为HSE */
     RCC_OscInitStruct.HSIState = RCC_HSI_OFF;
@@ -341,11 +301,6 @@ WEAK void SystemClock_Config(void)
     }
 
 #elif defined(AIR001xx_HSE_24M_HCLK_48M)
-#ifdef HSE_VALUE
-#undef HSE_VALUE
-#endif
-#define HSE_VALUE 24000000U
-
     /* 振荡器配置 */
     RCC_OscInitStruct.OscillatorType |= RCC_OSCILLATORTYPE_HSE; /* 选择RCC振荡器为HSE */
     RCC_OscInitStruct.HSIState = RCC_HSI_OFF;
