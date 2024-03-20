@@ -11,7 +11,7 @@
 
 
 #include <Wire.h>
-
+unsigned long IICfreetime = 0;
 void setup()
 {
   Wire.begin(2);                // join i2c bus with address #2
@@ -20,7 +20,14 @@ void setup()
 
 void loop()
 {
-  delay(100);
+  if (__HAL_I2C_GET_FLAG(Wire.getHandle(), I2C_FLAG_BUSY) == RESET) {
+    IICfreetime = millis();                     //总线不忙
+  } else if ((millis() - IICfreetime) > 100) {  //总线忙超过100ms复位
+    Wire.end();
+    Wire.begin(2);
+    Wire.onRequest(requestEvent);
+  }
+  delay(1);
 }
 
 // function that executes whenever data is requested by master
