@@ -7,7 +7,7 @@
 #elif AIR001xx
   #include "air001xx_ll_dma.c"
 #elif AIR32F1xx
-  #include "AIR32F1xx_ll_dma.c"
+  #include "air32f1xx_ll_dma.c"
 #elif AIRF2xx
   #include "airf2xx_ll_dma.c"
 #elif AIRF3xx

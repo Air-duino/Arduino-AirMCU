@@ -9,7 +9,7 @@
 #elif AIR401xx
   #include "air401xx_hal_cortex.c"
 #elif AIR32F1xx
-  #include "AIR32F1xx_hal_cortex.c"
+  #include "air32f1xx_hal_cortex.c"
 #elif AIRF2xx
   #include "airf2xx_hal_cortex.c"
 #elif AIRF3xx

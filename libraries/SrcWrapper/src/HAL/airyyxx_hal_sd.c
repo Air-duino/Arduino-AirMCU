@@ -3,7 +3,7 @@
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
 #ifdef AIR32F1xx
-  #include "AIR32F1xx_hal_sd.c"
+  #include "air32f1xx_hal_sd.c"
 #elif AIRF2xx
   #include "airf2xx_hal_sd.c"
 #elif AIRF4xx

@@ -9,7 +9,7 @@
 #elif AIR401xx
   #include "air401xx_ll_crc.c"
 #elif AIR32F1xx
-  #include "AIR32F1xx_ll_crc.c"
+  #include "air32f1xx_ll_crc.c"
 #elif AIRF2xx
   #include "airf2xx_ll_crc.c"
 #elif AIRF3xx

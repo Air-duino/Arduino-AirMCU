@@ -7,7 +7,7 @@
 #elif AIR001xx
   #include "air001xx_hal_rtc_ex.c"
 #elif AIR32F1xx
-  #include "AIR32F1xx_hal_rtc_ex.c"
+  #include "air32f1xx_hal_rtc_ex.c"
 #elif AIRF2xx
   #include "airf2xx_hal_rtc_ex.c"
 #elif AIRF3xx

@@ -5,7 +5,7 @@
 #ifdef AIRC0xx
   #include "airc0xx_hal_flash_ex.c"
 #elif AIR32F1xx
-  #include "AIR32F1xx_hal_flash_ex.c"
+  #include "air32f1xx_hal_flash_ex.c"
 #elif AIRF2xx
   #include "airf2xx_hal_flash_ex.c"
 #elif AIRF3xx

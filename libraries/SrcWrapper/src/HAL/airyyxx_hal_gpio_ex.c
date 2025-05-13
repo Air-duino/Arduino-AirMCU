@@ -3,6 +3,6 @@
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
 #ifdef AIR32F1xx
-  #include "AIR32F1xx_hal_gpio_ex.c"
+  #include "air32f1xx_hal_gpio_ex.c"
 #endif
 #pragma GCC diagnostic pop

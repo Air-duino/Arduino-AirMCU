@@ -7,7 +7,7 @@
 #elif AIR001xx
   #include "air001xx_hal_i2s.c"
 #elif AIR32F1xx
-  #include "AIR32F1xx_hal_i2s.c"
+  #include "air32f1xx_hal_i2s.c"
 #elif AIRF2xx
   #include "airf2xx_hal_i2s.c"
 #elif AIRF3xx

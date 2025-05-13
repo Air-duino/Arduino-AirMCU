@@ -5,7 +5,7 @@
 #ifdef AIR001xx
   #include "air001xx_ll_usb.c"
 #elif AIR32F1xx
-  #include "AIR32F1xx_ll_usb.c"
+  #include "air32f1xx_ll_usb.c"
 #elif AIRF2xx
   #include "airf2xx_ll_usb.c"
 #elif AIRF3xx

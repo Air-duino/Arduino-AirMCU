@@ -6,8 +6,8 @@
   #include "Legacy/air001xx_hal_can.c"
   #include "air001xx_hal_can.c"
 #elif AIR32F1xx
-  #include "Legacy/AIR32F1xx_hal_can.c"
-  #include "AIR32F1xx_hal_can.c"
+  #include "Legacy/air32f1xx_hal_can.c"
+  #include "air32f1xx_hal_can.c"
 #elif AIRF2xx
   #include "Legacy/airf2xx_hal_can.c"
   #include "airf2xx_hal_can.c"
